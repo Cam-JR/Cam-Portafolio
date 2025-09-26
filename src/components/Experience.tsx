@@ -1,7 +1,8 @@
 'use client'
 import React, { useState } from 'react';
 
-// --- 1. Estructura de Datos (Ahora con 'techStack' para Experiencias) ---
+// --- 1. Estructura de Datos (Sin Cambios - Se mantiene la estructura) ---
+// ... (Tus interfaces y datos de EXPERIENCE_DATA, EDUCATION_DATA, LANGUAGES_DATA, ACHIEVEMENTS_DATA, TAB_DATA, TABS) ...
 
 type Tech = {
     name: string;
@@ -38,8 +39,6 @@ type Achievement = {
 type TabKey = 'Experiencia Profesional' | 'Educación' | 'Idiomas' | 'Logros';
 
 const EXPERIENCE_DATA: Experience[] = [
-     
-    // Tus experiencias anteriores, adaptadas para incluir techStack
     {
         title: 'Practicante de Desarrollo Web (WordPress)',
         company: 'CaféLink Peru E.I.R.L.',
@@ -51,7 +50,7 @@ const EXPERIENCE_DATA: Experience[] = [
         ],
         techStack: [
             { name: 'WordPress'},
-            { name: 'HTML/CSS'}, 
+            { name: 'HTML/CSS'},
             { name: 'PHP'},
         ],
     },
@@ -65,7 +64,7 @@ const EXPERIENCE_DATA: Experience[] = [
             'Implementé un sistema que mejoró la comunicación con padres durante el proceso de inscripción.',
         ],
         techStack: [
-            { name: 'HTML/CSS'}, 
+            { name: 'HTML/CSS'},
             { name: 'JavaScript'},
             { name: 'Bootstrap'},
         ],
@@ -147,13 +146,13 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, company, period, loc
             {/* Círculo de la línea de tiempo */}
             <span className="absolute -left-3 top-6 w-5 h-5 rounded-full bg-white border-2 border-indigo-500 dark:bg-gray-900 dark:border-indigo-400"></span>
 
-            <div className="flex justify-between items-start mb-2">
-                <div>
+            <div className="flex flex-col sm:flex-row justify-between items-start mb-2"> {/* Agregamos flex-col/sm:flex-row */}
+                <div className="sm:w-3/5 w-full"> {/* Controlamos el ancho para que la info de tiempo quepa */}
                     <h3 className="font-bold text-gray-800 dark:text-gray-100 text-lg">
                         {title}
                     </h3>
                     {(company || level || institution) && (
-                        <p className="text-sm text-indigo-600 dark:text-gray-400 flex items-center">
+                        <p className="text-sm text-indigo-600 dark:text-gray-400 flex items-center mt-1">
                             {(company || institution) && (
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -163,9 +162,10 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, company, period, loc
                         </p>
                     )}
                 </div>
-                <div className="text-right text-sm text-gray-600 dark:text-gray-400 min-w-max ml-4">
+                {/* Ajuste de responsividad en Periodo/Ubicación */}
+                <div className="text-left sm:text-right text-sm text-gray-600 dark:text-gray-400 sm:min-w-max sm:ml-4 mt-2 sm:mt-0">
                     {period && (
-                        <p className="flex items-center justify-end">
+                        <p className="flex items-center sm:justify-end">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
@@ -173,7 +173,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, company, period, loc
                         </p>
                     )}
                     {location && (
-                        <p className="flex items-center justify-end">
+                        <p className="flex items-center sm:justify-end">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -182,7 +182,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, company, period, loc
                         </p>
                     )}
                     {year && (
-                        <p className="flex items-center justify-end">
+                        <p className="flex items-center sm:justify-end">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
@@ -228,46 +228,47 @@ export default function About() {
     return (
         <section id="experience" className="py-16 bg-gray-50 dark:bg-gray-800">
             <h2 className="text-4xl font-extrabold mb-2 text-center text-gray-900 dark:text-white">
-                Mi experiencia 
+                Mi experiencia
             </h2>
             <br />
-            <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-10">
+            <p className="text-base text-gray-600 dark:text-gray-400 text-center mb-10">
                 Un viaje a través de mi crecimiento profesional, formación, idiomas y logros.
             </p>
 
-            {/* --- Contenedor de Pestañas (Tabs) --- */}
-            <div className="flex justify-center mb-10 mx-4">
-                <div className="flex p-1 bg-white rounded-xl shadow-md border border-gray-100 overflow-x-auto">
+            {/* --- Contenedor de Pestañas (Tabs) - ¡MEJORA AQUÍ! --- */}
+            <div className="flex justify-center mb-10 px-4"> {/* Agregamos 'px-4' para márgenes en móviles */}
+                <div className="flex p-1 bg-white rounded-xl shadow-md border border-gray-100 overflow-x-auto whitespace-nowrap max-w-full">
+                    {/* 'overflow-x-auto' y 'whitespace-nowrap' son esenciales para el scroll horizontal */}
                     {TABS.map((tab) => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
-                            className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition duration-300 ease-in-out ${
+                            className={`flex items-center px-3 py-2 sm:px-4 rounded-lg text-sm font-medium transition duration-300 ease-in-out ${
                                 activeTab === tab
-                                    ? 'bg-indigo-700 text-white shadow-lg' // Color de fondo y texto como la imagen
+                                    ? 'bg-indigo-700 text-white shadow-lg'
                                     : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800'
                             }`}
                         >
-                            {/* Iconos para las pestañas */}
+                            {/* Reducimos el margen del icono en móviles (mr-1) y aumentamos en sm (sm:mr-2) */}
                             {tab === 'Experiencia Profesional' && (
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.25V7l-5-5H7a2 2 0 00-2 2v16a2 2 0 002 2h6.75M17 17l4-4m-4 4l-4-4m4 4V13" />
                                 </svg>
                             )}
                             {tab === 'Educación' && (
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                     <path d="M12 14l9-5-9-5-9 5 9 5z" />
                                     <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
                                 </svg>
                             )}
                             {tab === 'Idiomas' && (
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 0115 10c1.558-1.56 2.594-3.35 2.737-5.148M11.5 9h-10M11 21v-7a3 3 0 016 0v7M3 21h18" />
                                 </svg>
                             )}
                             {tab === 'Logros' && (
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697A3.42 3.42 0 007 9.111V12h2.222a2.105 2.105 0 011.5.6l5.272 5.272c.11.11.11.283 0 .393l-1.374 1.374a.733.733 0 01-1.047 0L10.3 15.3l-1.428 1.428a1.2 1.2 0 01-1.704 0L4.76 13.72a1.2 1.2 0 010-1.704l2.52-2.522z" />
                                 </svg>
                             )}
@@ -279,24 +280,24 @@ export default function About() {
 
             {/* --- Contenido de la Pestaña Activa (Línea de Tiempo) --- */}
             <div className="container max-w-3xl mx-auto px-6">
-                {/* El título principal de la sección ya está arriba, no necesitamos otro aquí */}
                 
                 {/* Contenedor de la Línea de Tiempo */}
-                <div className="relative border-l-2 border-gray-300 dark:border-gray-600 pl-6 space-y-8"> {/* Color de la línea de tiempo ajustado */}
-                                        {currentTabContent.data.map((item: any, index: number) => (
-                                            <TimelineItem
-                                                key={index}
-                                                title={item.title}
-                                                company={item.company}
-                                                period={item.period}
-                                                location={item.location}
-                                                description={item.description}
-                                                level={item.level}
-                                                institution={item.institution}
-                                                year={item.year}
-                                                techStack={item.techStack}
-                                            />
-                                        ))}
+                <div className="relative border-l-2 border-gray-300 dark:border-gray-600 pl-6 space-y-8">
+                    {currentTabContent.data.map((item: any, index: number) => (
+                        <TimelineItem
+                        key={index}
+                        title={item.title}                        
+                        company={item.company}
+                        period={item.period}                                                
+                        location={item.location}                        
+                        description={item.description}                        
+                        level={item.level}                        
+                        institution={item.institution}                        
+                        year={item.year}                        
+                        techStack={item.techStack}                        
+                        />                   
+                    ))}                                                   
+                                                         
                 </div>
             </div>
         </section>
