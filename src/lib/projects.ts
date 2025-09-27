@@ -17,6 +17,42 @@ const projects = [
     github: "https://github.com/tuusuario/app-notas",
     demo: "#",
   },
+  {
+    id: 3,
+    title: "App de Notas",
+    description: "Aplicación CRUD sencilla con React y LocalStorage.",
+    image: "/images/proyectos/notas.png",
+    tech: ["React", "CSS"],
+    github: "https://github.com/tuusuario/app-notas",
+    demo: "#",
+  },
+  {
+    id: 4,
+    title: "App de Notas",
+    description: "Aplicación CRUD sencilla con React y LocalStorage.",
+    image: "/images/proyectos/notas.png",
+    tech: ["React", "CSS"],
+    github: "https://github.com/tuusuario/app-notas",
+    demo: "#",
+  },
+  {
+    id: 5,
+    title: "App de Notas",
+    description: "Aplicación CRUD sencilla con React y LocalStorage.",
+    image: "/images/proyectos/notas.png",
+    tech: ["React", "CSS"],
+    github: "https://github.com/tuusuario/app-notas",
+    demo: "#",
+  },
+  {
+    id: 6,
+    title: "App de Notas",
+    description: "Aplicación CRUD sencilla con React y LocalStorage.",
+    image: "/images/proyectos/notas.png",
+    tech: ["React", "CSS"],
+    github: "https://github.com/tuusuario/app-notas",
+    demo: "#",
+  },
 ];
 
 export default projects;
