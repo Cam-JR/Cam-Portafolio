@@ -63,15 +63,14 @@ export default function Hero() {
 
           {/* Botón Contacto */}
           <motion.a
-            href="#contact"
-            download
+            href="#contact" 
             className="flex items-center px-6 py-3 bg-gray-900 text-white rounded-xl shadow-lg hover:bg-indigo-600 transition duration-300 transform hover:-translate-y-1 "
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
           >
             <FaEnvelope className="mr-2" />
-            Let's work together
+            Trabajemos juntos
           </motion.a> 
 
            
