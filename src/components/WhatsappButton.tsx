@@ -4,7 +4,7 @@ export default function WhatsappButton() {
       href="https://wa.link/4m0n1m"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 bg-green-500 p-3 rounded-full shadow-lg hover:scale-110 transition-transform"
+      className="fixed bottom-6 right-6 bg-green-500 p-3 rounded-full shadow-lg hover:scale-110 transition-transform z-50"
     >
       <img
         src="/icons/whatsapp.svg"
