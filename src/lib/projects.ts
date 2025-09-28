@@ -5,8 +5,8 @@ const projects = [
     description: "Un sitio web responsive sobre mí y mis proyectos.",
     image: "/images/proyectos/camdevportafolio.jpg",
     tech: ["TypeScript", "JavaScript", "CSS"],
-    github: "https://github.com/tuusuario/portafolio",
-    // demo: "#",
+    github: "https://github.com/Cam-JR/Cam-Portafolio",
+    demo: "http://10.10.163.106:3000/",
   },
   {
     id: 2,
