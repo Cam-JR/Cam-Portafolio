@@ -37,7 +37,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16"> 
+    <section id="contact" className="py-10"> 
       <h2 className="text-4xl font-extrabold mb-10 text-center text-gray-900">Contacto</h2>
       <div className="container mx-auto px-6 grid md:grid-cols-2 gap-10">
         {/* --- Left Side --- */}

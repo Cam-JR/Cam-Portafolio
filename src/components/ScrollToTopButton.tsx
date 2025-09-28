@@ -17,7 +17,7 @@ export default function ScrollToTopButton() {
       aria-label="Ir arriba"
     >
       <img
-        src="/icons/arrowup.svg" // 🔹 agrega este ícono en tu carpeta /public/icons
+        src="/icons/arrowup.svg"  
         alt="Ir arriba"
         className="w-8 h-8"
       />
