@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import WhatsappButton from "../components/WhatsappButton";
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 export const metadata = {
   title: "Camila Jimenez | Frontend Developer",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Navbar />
         <main className="container mx-auto">{children}</main>
         <WhatsappButton />
+        <ScrollToTopButton /> 
         <Footer />
       </body>
     </html>
