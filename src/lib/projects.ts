@@ -1,3 +1,4 @@
+//projects.ts
 const projects = [
   {
     id: 1,
