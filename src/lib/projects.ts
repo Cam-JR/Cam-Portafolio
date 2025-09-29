@@ -13,7 +13,7 @@ const projects = [
     id: 2,
     title: "Peluquería Admin",
     description: "Panel administrativo pensado para la gestión de citas y servicios de peluquería.",
-    image: "/images/proyectos/ ",
+    image: "/images/proyectos/peluqueriadmin.jpg",
     tech: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/Cam-JR/peluqueria-admin",
     // demo: "#",
