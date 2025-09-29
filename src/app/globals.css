@@ -35,7 +35,12 @@ html {
 }
  
 
- 
+ /* Mueve las bolitas del carrusel más abajo */
+.swiper-pagination {
+  position: relative !important; /* Cambia de absolute a relative */
+  margin-top: 20px; /* Ajusta cuánto espacio debajo de las cards */
+}
+
 
 
 

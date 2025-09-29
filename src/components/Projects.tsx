@@ -16,12 +16,12 @@ export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section id="projects" className="py-5 relative overflow-hidden">
+    <section id="projects" className="py-2 relative overflow-hidden">
       <h2 className="text-4xl font-extrabold mb-10 text-center text-gray-900 dark:text-white">
         Proyectos
       </h2>
 
-      {/* Fondo sutil animado (opcional, da ese look tipo Gemini) */}
+      {/* Fondo sutil animado*/}
       <motion.div
         aria-hidden
         initial={{ opacity: 0 }}
