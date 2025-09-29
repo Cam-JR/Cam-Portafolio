@@ -64,7 +64,7 @@ export default function Projects() {
                 initial={{ opacity: 0, y: 30, scale: 0.96 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.07 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 className="w-full max-w-[340px]" // controla tamaño de cada slide
               >
                 {/* Pasamos si la tarjeta es la activa para ajustar sombre/zoom */}
