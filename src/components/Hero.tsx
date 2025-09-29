@@ -18,7 +18,9 @@ export default function Hero() {
         <motion.h1
           className="text-4xl md:text-5xl lg:text-6xl font-bold mb-7"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: false, amount: 0.3 }}
         >
           ¡Hola! Soy <span className="text-indigo-400">Cam</span> 
         </motion.h1>
@@ -40,38 +42,43 @@ export default function Hero() {
             href="#projects" 
             className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl shadow-lg hover:bg-indigo-600 transition duration-300 transform hover:-translate-y-1"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: false, amount: 0.3 }}
           >
             <FaRegStar className="text-base" />
             <span className="font-medium">Ver Proyectos</span>
             <FaArrowRight className="text-base" />
           </motion.a>
 
+
           {/* Botón "Descargar CV" */}
           <motion.a
             href="/cv.pdf"
             download
-            className="flex items-center px-6 py-3 bg-gray-900 text-white rounded-xl shadow-lg hover:bg-indigo-600 transition duration-300 transform hover:-translate-y-1"
+            className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl shadow-lg hover:bg-indigo-600 transition duration-300 transform hover:-translate-y-1"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            viewport={{ once: false, amount: 0.3 }}
           >
-            <FaDownload className="text-base mr-2" />
-            Descargar CV
-          </motion.a> 
+            <FaDownload className="text-base" />
+            <span className="font-medium">Descargar CV</span>
+          </motion.a>
 
           {/* Botón Contacto */}
           <motion.a
-            href="#contact" 
-            className="flex items-center px-6 py-3 bg-gray-900 text-white rounded-xl shadow-lg hover:bg-indigo-600 transition duration-300 transform hover:-translate-y-1 "
+            href="#contact"
+            className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl shadow-lg hover:bg-indigo-600 transition duration-300 transform hover:-translate-y-1"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            viewport={{ once: false, amount: 0.3 }}
           >
-            <FaEnvelope className="mr-2" />
-            Trabajemos juntos
-          </motion.a> 
+            <FaEnvelope className="text-base" />
+            <span className="font-medium">Trabajemos juntos</span>
+          </motion.a>
+
 
            
         </div>
