@@ -33,7 +33,7 @@ export default function About() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           About me
         </motion.h2>
@@ -43,7 +43,7 @@ export default function About() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           Me apasiona el desarrollo frontend y actualmente trabajo en proyectos
           propios y como freelance. Me centro en escribir código limpio y
@@ -61,7 +61,7 @@ export default function About() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
             >
               <span className="text-indigo-600 dark:text-indigo-400 text-2xl mr-4">
                 {item.icon}
@@ -84,7 +84,7 @@ export default function About() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           <h3 className="text-3xl font-extrabold text-gray-800 dark:text-white mb-6">
             Intereses & Enfoque
@@ -95,7 +95,7 @@ export default function About() {
             className="flex flex-wrap justify-center gap-3 mb-6"
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             variants={{
               hidden: {},
               show: {
