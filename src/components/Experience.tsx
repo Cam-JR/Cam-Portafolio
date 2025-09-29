@@ -4,7 +4,7 @@ import {
     FaBuilding, FaCalendarAlt, FaMapMarkerAlt, FaGlobe, FaGraduationCap, FaBriefcase, FaAward
 } from 'react-icons/fa';
 
-// --- 1. Estructura de Datos ---
+// ---  Estructura de Datos ---
 type Tech = {
     name: string;
 };
@@ -124,7 +124,7 @@ const TAB_DATA: Record<TabKey, { data: Experience[] | Education[] | Language[] |
 
 const TABS: TabKey[] = Object.keys(TAB_DATA) as TabKey[];
 
-// --- 2. Componente Reutilizable para el Item de la Línea de Tiempo ---
+// ---  Componente Reutilizable para el Item de la Línea de Tiempo ---
 interface TimelineItemProps {
     title: string;
     company?: string;
@@ -211,7 +211,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
     );
 };
 
-// --- 3. Componente Principal ---
+// ---  Componente Principal ---
 export default function About() {
     const [activeTab, setActiveTab] = useState<TabKey>('Experiencia Profesional');
     const currentTabContent = TAB_DATA[activeTab];

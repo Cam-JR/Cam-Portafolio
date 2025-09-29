@@ -14,7 +14,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop menu */}
-          <ul className="hidden md:flex gap-6 text-white">
+          <ul className="hidden lg:flex gap-6 text-white">
             <li><a href="#about" className="hover:text-indigo-400">About me</a></li>
             <li><a href="#experience" className="hover:text-indigo-400">Experiencia</a></li>
             <li><a href="#projects" className="hover:text-indigo-400">Proyectos</a></li>
@@ -24,7 +24,7 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-2xl text-white"
+            className="lg:hidden text-2xl text-white"
             onClick={() => setOpen(!open)}
           >
             ☰

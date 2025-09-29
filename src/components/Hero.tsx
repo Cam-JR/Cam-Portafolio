@@ -16,14 +16,14 @@ export default function Hero() {
       {/* Contenido */}
       <motion.div className="relative z-10 text-white px-6 ">
         <motion.h1
-          className="text-5xl font-bold mb-7"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-7"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
           ¡Hola! Soy <span className="text-indigo-400">Cam</span> 
         </motion.h1>
         <motion.p
-          className="text-lg text-gray-200 mb-10"
+          className="text-base md:text-lg lg:text-xl text-gray-200 mb-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
@@ -33,7 +33,7 @@ export default function Hero() {
 
         
         {/* --- Contenedor de Botones - ¡AJUSTADO! --- */}
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-8">
            
           {/* Botón "Ver Proyectos" - ¡AJUSTADO PARA SER MÁS COMPACTO! */}
           <motion.a
