@@ -67,8 +67,7 @@ export default function Contact() {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="show"
-          viewport={{ amount: 0.2 }}
+          whileInView="show" 
         >
           <motion.p
             className="text-gray-600 dark:text-gray-400 mb-6 transition-colors duration-500"
@@ -136,8 +135,7 @@ export default function Contact() {
           className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm bg-white dark:bg-gray-800 transition-colors duration-500"
           variants={containerVariants}
           initial="hidden"
-          whileInView="show"
-          viewport={{ amount: 0.2 }}
+          whileInView="show" 
         >
           <motion.h3
             className="text-xl font-semibold mb-6 text-gray-900 dark:text-white transition-colors duration-500"
