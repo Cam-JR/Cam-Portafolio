@@ -1,7 +1,8 @@
 'use client'
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
-// ---  Estructura de Datos con iconos (sin cambios, solo para referencia) ---
+// --- Estructura de Datos (sin cambios) ---
 
 type Skill = {
   name: string;
@@ -41,7 +42,29 @@ const SKILLS_DATA: Record<SkillCategory, Skill[]> = {
 
 const TABS: SkillCategory[] = Object.keys(SKILLS_DATA) as SkillCategory[];
 
-// --- 2. Componente Reutilizable para la Tarjeta de Habilidad con Icono (sin cambios necesarios) ---
+// --- Variantes de Animación ---
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05, // Retraso entre la aparición de cada tarjeta
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+// --- Componente Reutilizable para la Tarjeta de Habilidad ---
 interface SkillCardProps {
   level: number;
   name: string;
@@ -51,7 +74,10 @@ interface SkillCardProps {
 
 const SkillCard: React.FC<SkillCardProps> = ({ level, name, category, icon }) => {
   return (
-    <div className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center">
+    <motion.div
+      className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center"
+      variants={itemVariants}
+    >
       {icon && (
         <img src={icon} alt={name} className="w-12 h-12 object-contain mb-3" />
       )}
@@ -61,19 +87,18 @@ const SkillCard: React.FC<SkillCardProps> = ({ level, name, category, icon }) =>
       </span>
       <div className="w-full flex justify-between items-center mb-2 px-1">
         <span className="text-md font-bold text-gray-700">{level}%</span>
-        {/* Barra de Progreso */}
         <div className="relative flex-grow h-2 bg-gray-200 rounded-full overflow-hidden ml-3">
           <div
-            className="h-full bg-indigo-600 rounded-full transition-all duration-700 ease-out"
+            className="h-full bg-indigo-600 rounded-full"
             style={{ width: `${level}%` }}
           ></div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-// --- 3. Componente Principal `Skills` con mejoras de Responsividad ---
+// --- Componente Principal `Skills` con Animación al hacer Scroll ---
 
 export default function Skills() {
   const [activeTab, setActiveTab] = useState<SkillCategory>('Programming');
@@ -81,16 +106,19 @@ export default function Skills() {
   return (
     <section id="skills" className="py-16 bg-gray-50">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-extrabold mb-10 text-center text-gray-900">
+        <motion.h2
+          className="text-4xl font-extrabold mb-10 text-center text-gray-900"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.5 }}
+          transition={{ duration: 0.6 }}
+        >
           Skills
-        </h2>
+        </motion.h2>
 
-        {/* --- Contenedor de Pestañas (Tabs) - ¡MEJORAS APLICADAS AQUÍ! --- */}
+        {/* --- Contenedor de Pestañas (Tabs) --- */}
         <div className="flex justify-center mb-10 mx-4"> 
-          {/* Añadimos 'mx-4' para evitar que el scroll horizontal toque el borde de la pantalla */}
           <div className="flex p-1 bg-white rounded-xl shadow-md border border-gray-100 overflow-x-auto whitespace-nowrap">
-            {/* 'overflow-x-auto' permite el scroll horizontal en móviles si no caben */}
-            {/* 'whitespace-nowrap' evita que los botones se envuelvan a la siguiente línea */}
             {TABS.map((tab) => (
               <button
                 key={tab}
@@ -100,9 +128,7 @@ export default function Skills() {
                     ? 'bg-indigo-700 text-white shadow-lg'
                     : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800'
                 }`}
-                // Agregado 'sm:px-4' para usar menos padding en pantallas pequeñas
               >
-                {/* Íconos SVG (sin cambios) */}
                 {tab === 'Programming' && (
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 4l-4 4 4 4" />
@@ -130,15 +156,15 @@ export default function Skills() {
           </div>
         </div>
 
-        {/* --- Contenido de las Habilidades (Grid) - ¡MEJORAS APLICADAS AQUÍ! --- */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 max-w-6xl mx-auto">
-          {/* Anteriormente tenías: grid-cols-1 sm:grid-cols-2 lg:grid-cols-3. Lo mejoramos a:
-            grid-cols-2: 2 columnas por defecto (móvil).
-            md:grid-cols-3: 3 columnas en tabletas.
-            lg:grid-cols-4: 4 columnas en escritorios grandes.
-            
-            También añadimos 'max-w-6xl mx-auto' para centrar el grid y limitar su ancho máximo.
-          */}
+        {/* --- Contenido de las Habilidades (Grid) con Animación al Scroll --- */}
+        <motion.div
+          key={activeTab} // Mantener el key para la transición de pestañas
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible" // <-- Usa whileInView para animar al entrar en la vista
+          viewport={{ amount: 0.2 }} // Ajusta 'amount' según cuánto del elemento debe ser visible
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 max-w-6xl mx-auto"
+        >
           {SKILLS_DATA[activeTab].map((skill: Skill) => (
             <SkillCard
               key={skill.name}
@@ -148,8 +174,7 @@ export default function Skills() {
               icon={skill.icon}
             />
           ))}
-        </div>
-
+        </motion.div>
       </div>
     </section>
   );

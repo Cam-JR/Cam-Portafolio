@@ -81,7 +81,6 @@ export default function ProjectCard({
         {/* Capa brillante sutil */}
         <div className="absolute inset-0 pointer-events-none mix-blend-screen opacity-0 group-hover:opacity-30 transition-opacity" />
       </div>
- 
 
       <div className="p-5">
         <h3 className="text-lg font-bold mb-1 text-gray-900 dark:text-white">{title}</h3>

@@ -16,12 +16,12 @@ export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section id="projects" className="py-2 relative overflow-hidden">
+    <section id="projects" className="py-5 relative overflow-hidden">
       <h2 className="text-4xl font-extrabold mb-10 text-center text-gray-900 dark:text-white">
         Proyectos
       </h2>
 
-      {/* Fondo sutil animado*/}
+      {/* Fondo sutil animado (opcional, da ese look tipo Gemini) */}
       <motion.div
         aria-hidden
         initial={{ opacity: 0 }}
@@ -64,7 +64,7 @@ export default function Projects() {
                 initial={{ opacity: 0, y: 30, scale: 0.96 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.07 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 className="w-full max-w-[340px]" // controla tamaño de cada slide
               >
                 {/* Pasamos si la tarjeta es la activa para ajustar sombre/zoom */}
