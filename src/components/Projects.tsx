@@ -19,13 +19,13 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className={`py-12 relative overflow-hidden transition-colors duration-700 ${
+      className={`py-4 relative overflow-hidden transition-colors duration-700 ${
         darkMode
-          ? 'text-gray-100'
+          ? 'bg-[#0a0a1f] text-gray-100'
           : 'bg-white text-gray-900'
       }`}
     >
-      {/* Fondo degradado tipo referencia */}
+      {/* Fondo degradado animado */}
       <motion.div
         aria-hidden
         initial={{ opacity: 0 }}
@@ -110,5 +110,5 @@ export default function Projects() {
         </Swiper>
       </div>
     </section>
-  );
+  );
 }

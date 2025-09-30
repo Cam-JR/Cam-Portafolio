@@ -20,7 +20,7 @@ export default function Navbar() {
             <li><a href="#projects" className="hover:text-indigo-400">Proyectos</a></li>
             <li><a href="#skills" className="hover:text-indigo-400">Skills</a></li>
             <li><a href="#contact" className="hover:text-indigo-400">Contacto</a></li>
-            <br />
+          <br />
           </ul>
 
           {/* Mobile menu button */}
