@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   FaBuilding, FaCalendarAlt, FaMapMarkerAlt, FaGlobe, FaGraduationCap, FaBriefcase, FaAward
-} from 'react-icons/fa'; 
+} from 'react-icons/fa';
 
 // --- Estructura de Datos ---
 type Tech = {
@@ -37,7 +37,7 @@ type Achievement = {
   year: string;
 };
 
-// Tipo de Unión para los datos de cualquier pestaña
+// Tipo de Unión para los datos de cualquier pestaña (Corrige el error de 'any')
 type TimelineItemData = Experience | Education | Language | Achievement; 
 
 type TabKey = 'Experiencia Profesional' | 'Educación' | 'Idiomas' | 'Logros';
@@ -269,13 +269,14 @@ export default function About() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              {/* ¡AQUÍ ESTÁ LA CORRECCIÓN! De item: any a item: TimelineItemData */}
               {currentTabContent.data.map((item: TimelineItemData, index: number) => (
                 <TimelineItem
                   key={index}
                   title={item.title}
+                  // Se usan Type Guards ('propiedad' in item) para verificar si la propiedad existe
+                  // en el objeto antes de acceder a ella, evitando el error de TypeScript.
                   company={('company' in item) ? item.company : undefined}
-                  period={item.period}
+                  period={('period' in item) ? item.period : undefined} // ESTA FUE LA CORRECCIÓN CLAVE
                   location={('location' in item) ? item.location : undefined}
                   description={('description' in item) ? item.description : undefined}
                   level={('level' in item) ? item.level : undefined}
