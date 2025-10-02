@@ -25,11 +25,11 @@ const interests = [
 
 export default function About() {
   return (
-    <section id="about" className="py-16 bg-indigo-50">
+    <section id="about" className="py-16 bg-indigo-60 ">
       <div className="container mx-auto px-6">
         {/* --- Título y subtítulo --- */}
         <motion.h2
-          className="text-4xl font-extrabold mb-7 text-center text-gray-900 dark:text-white"
+          className="text-4xl font-extrabold mb-7 text-center text-gray-900 dark:text-gray-900"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -39,7 +39,7 @@ export default function About() {
         </motion.h2>
 
         <motion.p
-          className="max-w-3xl mx-auto text-center text-gray-600 dark:text-gray-300 mb-10"
+          className="max-w-3xl mx-auto text-center text-gray-600 dark:bg-gray-500 mb-10"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
@@ -86,7 +86,7 @@ export default function About() {
           transition={{ duration: 0.9, delay: 0.2 }}
           viewport={{ once: false }}
         >
-          <h3 className="text-3xl font-extrabold text-gray-800 dark:text-white mb-6">
+          <h3 className="text-3xl font-extrabold text-gray-800 dark:text-gray-900 mb-6">
             Intereses & Enfoque
           </h3>
 
