@@ -25,11 +25,11 @@ const interests = [
 
 export default function About() {
   return (
-    <section id="about" className="py-16 bg-indigo-60 ">
+    <section id="about" className="py-16 bg-white dark:bg-[#0a0a1f] transition-colors duration-500">
       <div className="container mx-auto px-6">
         {/* --- Título y subtítulo --- */}
         <motion.h2
-          className="text-4xl font-extrabold mb-7 text-center text-gray-900 dark:text-gray-900"
+          className="text-4xl font-extrabold mb-7 text-center text-gray-900 dark:text-gray-50 transition-colors duration-500"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -39,7 +39,7 @@ export default function About() {
         </motion.h2>
 
         <motion.p
-          className="max-w-3xl mx-auto text-center text-gray-600 dark:bg-gray-500 mb-10"
+          className="max-w-3xl mx-auto text-center text-gray-600 dark:text-gray-400 mb-6 transition-colors duration-500"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
@@ -57,7 +57,7 @@ export default function About() {
           {personalData.map((item, index) => (
             <motion.div
               key={index}
-              className="flex items-center p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md border border-gray-100 dark:border-gray-700"
+              className="flex items-center p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md border border-gray-100 dark:border-gray-800"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -86,7 +86,7 @@ export default function About() {
           transition={{ duration: 0.9, delay: 0.2 }}
           viewport={{ once: false }}
         >
-          <h3 className="text-3xl font-extrabold text-gray-800 dark:text-gray-900 mb-6">
+          <h3 className="text-3xl font-extrabold text-gray-800 dark:text-gray-50 transition-colors duration-500 mb-6">
             Intereses & Enfoque
           </h3>
 

@@ -52,7 +52,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-10 bg-white dark:bg-gray-950 transition-colors duration-500">
+    <section id="contact" className="py-10 bg-white dark:bg-[#0a0a1f] transition-colors duration-500">
       <motion.h2
         className="text-4xl font-extrabold mb-10 text-center text-gray-900 dark:text-gray-50 transition-colors duration-500"
         initial={{ opacity: 0, y: -20 }}

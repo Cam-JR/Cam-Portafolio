@@ -9,7 +9,7 @@ const projects = [
     image: "/images/proyectos/camdevportafolio.jpg",
     tech: ["TypeScript", "JavaScript", "CSS"],
     github: "https://github.com/Cam-JR/Cam-Portafolio",
-    demo: "http://10.10.163.106:3000/",
+    demo: "https://cam-portafolio.vercel.app/",
   },
   {
     id: 2,

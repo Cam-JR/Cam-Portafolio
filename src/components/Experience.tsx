@@ -152,25 +152,25 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
 
   return (
     <motion.div
-      className="relative bg-white dark:bg-gray-900 p-5 rounded-2xl shadow-md border hover:shadow-lg transition duration-300"
+      className="relative bg-white p-5 rounded-2xl shadow-md border hover:shadow-lg transition duration-300 mb-2"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
     >
       {/* Punto de la línea */}
-      <span className="absolute -left-3 top-6 w-5 h-5 rounded-full bg-white border-2 border-indigo-500 dark:bg-gray-900 dark:border-indigo-400"></span>
+      <span className="absolute -left-3 top-6 w-5 h-5 rounded-full bg-white border-2 border-indigo-500 dark:bg-gray-900  "></span>
 
       <div className="flex flex-col sm:flex-row justify-between items-start mb-2">
         <div className="sm:w-3/5 w-full">
           {/* Título SIN ícono */}
-          <h3 className="font-bold text-gray-800 dark:text-gray-100 text-lg">
+          <h3 className="font-bold text-gray-800 text-lg">
             {title}
           </h3>
 
           {/* Subtítulo */}
           {(company || level || institution) && (
-            <p className="text-sm text-indigo-600 dark:text-gray-400 mt-1 flex items-center">
+            <p className="text-sm text-indigo-600 mt-1 flex items-center">
               {isEducation && <FaBuilding className="text-base mr-1 text-gray-400" />}
               {isAchievement && <FaBuilding className="text-base mr-1 text-gray-400" />}
               {isExperience && <FaBriefcase className="text-base mr-1 text-gray-400" />}
@@ -180,7 +180,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
         </div>
 
         {/* Periodo / ubicación / año */}
-        <div className="text-left sm:text-right text-sm text-gray-600 dark:text-gray-400 sm:min-w-max sm:ml-4 mt-2 sm:mt-0">
+        <div className="text-left sm:text-right text-sm text-gray-600 sm:min-w-max sm:ml-4 mt-2 sm:mt-0">
           {period && (
             <p className="flex items-center sm:justify-end">
               <FaCalendarAlt className="h-4 w-4 mr-1 text-gray-400" />
@@ -203,7 +203,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
       </div>
 
       {description && (
-        <ul className="mt-3 text-gray-700 dark:text-gray-300 text-sm list-disc pl-5 space-y-1">
+        <ul className="mt-3 text-gray-700 text-sm list-disc pl-5 space-y-1">
           {description.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
       )}
@@ -227,17 +227,17 @@ export default function About() {
   const currentTabContent = TAB_DATA[activeTab];
 
   return (
-    <section id="experience" className="py-16 bg-gray-50 dark:bg-gray-800 transition-colors duration-500">
-      <h2 className="text-4xl font-extrabold mb-7 text-center text-gray-900 dark:text-white transition-colors duration-500">
+    <section id="experience" className="py-16 bg-gray-50  transition-colors duration-500">
+      <h2 className="text-4xl font-extrabold mb-7 text-center text-gray-900   transition-colors duration-500">
         Mi experiencia
       </h2>
-      <p className="text-base text-gray-600 dark:text-gray-400 text-center mb-7 transition-colors duration-500">
+      <p className="text-base text-gray-600   text-center mb-7 transition-colors duration-500">
         Un viaje a través de mi crecimiento profesional, formación, idiomas y logros.
       </p>
 
       {/* Tabs */}
       <div className="flex justify-center mb-10 px-4">
-        <div className="flex p-1 bg-white dark:bg-gray-900 rounded-xl shadow-md border border-gray-100 dark:border-gray-800 overflow-x-auto whitespace-nowrap max-w-full transition-colors duration-500">
+        <div className="flex p-1 bg-white  rounded-xl shadow-md border border-gray-100   overflow-x-auto whitespace-nowrap max-w-full transition-colors duration-500">
           {TABS.map((tab) => (
             <button
               key={tab}
@@ -245,7 +245,7 @@ export default function About() {
               className={`flex items-center px-3 py-2 sm:px-4 rounded-lg text-sm font-medium transition duration-300 ${
                 activeTab === tab
                   ? 'bg-indigo-700 text-white shadow-lg'
-                  : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-800 dark:hover:text-white'
+                  : 'text-gray-600   hover:bg-gray-100   hover:text-gray-800 dark:hover:text-white'
               }`}
             >
               {tab === 'Experiencia Profesional' && <FaBriefcase className="h-5 w-5 mr-1 sm:mr-2" />}
