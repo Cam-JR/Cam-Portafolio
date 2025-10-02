@@ -19,16 +19,16 @@ const SKILLS_DATA: Record<SkillCategory, Skill[]> = {
     { name: 'PHP', level: 40, category: 'Language', icon: '/icons/php.svg' },
   ],
   Frontend: [
-    { name: 'React.js', level: 40, category: 'Framework', icon: '/icons/react.svg' },
-    { name: 'Next.js', level: 40, category: 'Framework', icon: '/icons/nextdotjs.svg' },
-    { name: 'Tailwind CSS', level: 40, category: 'CSS', icon: '/icons/tailwindcss.svg' },
+    { name: 'React.js', level: 30, category: 'Framework', icon: '/icons/react.svg' },
+    { name: 'Next.js', level: 30, category: 'Framework', icon: '/icons/nextdotjs.svg' },
+    { name: 'Tailwind CSS', level: 30, category: 'CSS', icon: '/icons/tailwindcss.svg' },
     { name: 'HTML5', level: 75, category: 'Markup', icon: '/icons/html.svg' },
     { name: 'CSS3', level: 75, category: 'Styling', icon: '/icons/css.svg' },
     { name: 'Bootstrap', level: 75, category: 'Framework', icon: "/icons/bootstrap.svg" },
   ],
   Backend: [
-    { name: 'Laravel', level: 40, category: 'Framework', icon: '/icons/laravel.svg' },
-    { name: 'MySQL', level: 76, category: 'Database', icon: '/icons/mysql.svg' },
+    { name: 'Laravel', level: 30, category: 'Framework', icon: '/icons/laravel.svg' },
+    { name: 'MySQL', level: 75, category: 'Database', icon: '/icons/mysql.svg' },
   ],
   Tools: [
     { name: 'Git', level: 75, category: 'Version Control', icon: '/icons/git.svg' },

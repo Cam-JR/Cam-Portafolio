@@ -1,3 +1,5 @@
+import { Type } from "lucide-react";
+
 //projects.ts
 const projects = [
   {
@@ -14,7 +16,7 @@ const projects = [
     title: "Peluquería Admin",
     description: "Panel administrativo pensado para la gestión de citas y servicios de peluquería.",
     image: "/images/proyectos/peluqueriadmin.jpg",
-    tech: ["HTML", "CSS", "JavaScript"],
+    tech: ["HTML", "CSS", "JavaScript", "TypeScript"], 
     github: "https://github.com/Cam-JR/peluqueria-admin",
     // demo: "#",
   },
