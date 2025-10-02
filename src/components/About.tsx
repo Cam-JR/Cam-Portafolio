@@ -25,7 +25,7 @@ const interests = [
 
 export default function About() {
   return (
-    <section id="about" className="py-16 bg-indigo-50 dark:bg-black-800">
+    <section id="about" className="py-16 bg-gray-90 dark:bg-indigo-800">
       <div className="container mx-auto px-6">
         {/* --- Título y subtítulo --- */}
         <motion.h2
