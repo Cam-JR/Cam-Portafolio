@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+// 1. IMPORTAR EL COMPONENTE LINK DE NEXT.JS
+import Link from "next/link"; 
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -9,9 +11,12 @@ export default function Navbar() {
       {/* Overlay ligero o blur opcional */}
       <div className="backdrop-blur-md bg-black/30">
         <div className="container mx-auto flex justify-between items-center px-4 py-3">
-          <a href="/" className="text-xl font-bold text-white">
+          
+          {/* 2. REEMPLAZAR EL <a> POR EL <Link /> DE NEXT.JS */}
+          {/* El error era aquí, al usar <a> para navegar a "/" */}
+          <Link href="/" className="text-xl font-bold text-white">
             Cam.dev
-          </a>
+          </Link>
 
           {/* Desktop menu */}
           <ul className="hidden md:flex gap-6 text-white">
@@ -20,10 +25,10 @@ export default function Navbar() {
             <li><a href="#projects" className="hover:text-indigo-400">Proyectos</a></li>
             <li><a href="#skills" className="hover:text-indigo-400">Skills</a></li>
             <li><a href="#contact" className="hover:text-indigo-400">Contacto</a></li>
-          <br />
+            <br />
           </ul>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button, etc. (El resto del código queda igual) */}
           <button
             className="md:hidden text-2xl text-white"
             onClick={() => setOpen(!open)}

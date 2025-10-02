@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   FaBuilding, FaCalendarAlt, FaMapMarkerAlt, FaGlobe, FaGraduationCap, FaBriefcase, FaAward
-} from 'react-icons/fa';
+} from 'react-icons/fa'; 
 
 // --- Estructura de Datos ---
 type Tech = {
@@ -36,6 +36,9 @@ type Achievement = {
   institution: string;
   year: string;
 };
+
+// Tipo de Unión para los datos de cualquier pestaña
+type TimelineItemData = Experience | Education | Language | Achievement; 
 
 type TabKey = 'Experiencia Profesional' | 'Educación' | 'Idiomas' | 'Logros';
 
@@ -116,7 +119,7 @@ const ACHIEVEMENTS_DATA: Achievement[] = [
   { title: 'Base de Datos Relacionales - SQL', institution: 'IDAT', year: 'Jun - Aug 2023' },
 ];
 
-const TAB_DATA: Record<TabKey, { data: Experience[] | Education[] | Language[] | Achievement[] }> = {
+const TAB_DATA: Record<TabKey, { data: TimelineItemData[] }> = {
   'Experiencia Profesional': { data: EXPERIENCE_DATA },
   'Educación': { data: EDUCATION_DATA },
   'Idiomas': { data: LANGUAGES_DATA },
@@ -266,18 +269,19 @@ export default function About() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              {currentTabContent.data.map((item: any, index: number) => (
+              {/* ¡AQUÍ ESTÁ LA CORRECCIÓN! De item: any a item: TimelineItemData */}
+              {currentTabContent.data.map((item: TimelineItemData, index: number) => (
                 <TimelineItem
                   key={index}
                   title={item.title}
-                  company={item.company}
+                  company={('company' in item) ? item.company : undefined}
                   period={item.period}
-                  location={item.location}
-                  description={item.description}
-                  level={item.level}
-                  institution={item.institution}
-                  year={item.year}
-                  techStack={item.techStack}
+                  location={('location' in item) ? item.location : undefined}
+                  description={('description' in item) ? item.description : undefined}
+                  level={('level' in item) ? item.level : undefined}
+                  institution={('institution' in item) ? item.institution : undefined}
+                  year={('year' in item) ? item.year : undefined}
+                  techStack={('techStack' in item) ? item.techStack : undefined}
                   activeTab={activeTab}
                 />
               ))}
