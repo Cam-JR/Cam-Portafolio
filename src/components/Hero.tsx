@@ -1,3 +1,4 @@
+//Hero.tsx
 "use client";
 import { motion } from "framer-motion"; 
 import { FaRegStar, FaArrowRight, FaDownload, FaEnvelope } from 'react-icons/fa';
@@ -14,8 +15,8 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
 
       {/* Contenido */}
-      <motion.div className="relative z-10 text-white px-6 ">
-        <motion.h1
+      <motion.div className="relative z-10 text-white px-6 **container mx-auto max-w-5xl**"> {/* <- ¡AÑADIDO! */}
+        <motion.h1
           className="text-4xl md:text-5xl lg:text-6xl font-bold mb-7"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +55,7 @@ export default function Hero() {
 
           {/* Botón "Descargar CV" */}
           <motion.a
-            href="/cv.pdf"
+            href="/CV-Camila Jimenez Riveros.pdf"
             download
             className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl shadow-lg hover:bg-indigo-600 transition duration-300 transform hover:-translate-y-1"
             initial={{ opacity: 0, y: 20 }}

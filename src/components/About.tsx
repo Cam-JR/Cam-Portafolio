@@ -121,7 +121,7 @@ export default function About() {
           {/* Botones */}
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="/cv.pdf"
+              href="/CV-Camila Jimenez Riveros.pdf"
               download
               className="flex items-center justify-center px-6 py-3 bg-indigo-500 text-white rounded-lg shadow-lg hover:bg-indigo-600 transition duration-300"
             >

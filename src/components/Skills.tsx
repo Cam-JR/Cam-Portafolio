@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 type Skill = {
   name: string;
-  level: number;
+  level: string;
   category: string;
   icon?: string;
 };
@@ -15,28 +15,28 @@ type SkillCategory = 'Programming' | 'Frontend' | 'Backend' | 'Tools';
 
 const SKILLS_DATA: Record<SkillCategory, Skill[]> = {
   Programming: [
-    { name: 'JavaScript', level: 40, category: 'Language', icon: '/icons/javascript.svg' },
-    { name: 'PHP', level: 40, category: 'Language', icon: '/icons/php.svg' },
+    { name: 'JavaScript', level: "Nivel - Intermedio", category: 'Language', icon: '/icons/javascript.svg' },
+    { name: 'PHP', level: "Nivel - Básico", category: 'Language', icon: '/icons/php.svg' },
   ],
   Frontend: [
-    { name: 'React.js', level: 30, category: 'Framework', icon: '/icons/react.svg' },
-    { name: 'Next.js', level: 30, category: 'Framework', icon: '/icons/nextdotjs.svg' },
-    { name: 'Tailwind CSS', level: 30, category: 'CSS', icon: '/icons/tailwindcss.svg' },
-    { name: 'HTML5', level: 75, category: 'Markup', icon: '/icons/html.svg' },
-    { name: 'CSS3', level: 75, category: 'Styling', icon: '/icons/css.svg' },
-    { name: 'Bootstrap', level: 75, category: 'Framework', icon: "/icons/bootstrap.svg" },
+    { name: 'React.js', level: "Nivel - Básico", category: 'Framework', icon: '/icons/react.svg' },
+    { name: 'Next.js', level: "Nivel - Básico", category: 'Framework', icon: '/icons/nextdotjs.svg' },
+    { name: 'Tailwind CSS', level: "Nivel - Básico", category: 'CSS', icon: '/icons/tailwindcss.svg' },
+    { name: 'HTML5', level: "Nivel - Intermedio", category: 'Markup', icon: '/icons/html.svg' },
+    { name: 'CSS3', level: "Nivel- Intermedio", category: 'Styling', icon: '/icons/css.svg' },
+    { name: 'Bootstrap', level: "Nivel - Básico", category: 'Framework', icon: "/icons/bootstrap.svg" },
   ],
   Backend: [
-    { name: 'Laravel', level: 30, category: 'Framework', icon: '/icons/laravel.svg' },
-    { name: 'MySQL', level: 75, category: 'Database', icon: '/icons/mysql.svg' },
+    { name: 'Laravel', level: "Nivel - Básico", category: 'Framework', icon: '/icons/laravel.svg' },
+    { name: 'MySQL', level: "Nivel - Intermedio", category: 'Database', icon: '/icons/mysql.svg' },
   ],
   Tools: [
-    { name: 'Git', level: 75, category: 'Version Control', icon: '/icons/git.svg' },
-    { name: 'GitHub', level: 75, category: 'Version Control', icon: '/icons/github1.svg' },
-    { name: 'Netlify', level: 80, category: 'Deployment', icon: '/icons/netlify.svg' },
-    { name: 'Figma', level: 40, category: 'Design', icon: '/icons/figma.svg' },
-    { name: 'VS Code', level: 100, category: 'Editor', icon: '/icons/vscode.svg' },
-    { name: 'Notion', level: 100, category: 'Productivity', icon: '/icons/notion.svg' },
+    { name: 'Git', level: "Nivel - Básico", category: 'Version Control', icon: '/icons/git.svg' },
+    { name: 'GitHub', level: "Nivel - Básico", category: 'Version Control', icon: '/icons/github1.svg' },
+    { name: 'Netlify', level: "Nivel - Intermedio", category: 'Deployment', icon: '/icons/netlify.svg' },
+    { name: 'Figma', level: "Nivel - básico ", category: 'Design', icon: '/icons/figma.svg' },
+    { name: 'VS Code', level: "Nivel - Intermedio", category: 'Editor', icon: '/icons/vscode.svg' },
+    { name: 'Notion', level: "Nivel - Intermedio", category: 'Productivity', icon: '/icons/notion.svg' },
   ],
 };
 
@@ -66,7 +66,7 @@ const itemVariants = {
 
 // --- Componente Reutilizable para la Tarjeta de Habilidad ---
 interface SkillCardProps {
-  level: number;
+  level: string;
   name: string;
   category: string;
   icon?: string;
@@ -85,15 +85,9 @@ const SkillCard: React.FC<SkillCardProps> = ({ level, name, category, icon }) =>
       <span className="text-sm font-medium text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full mb-3">
         {category}
       </span>
-      <div className="w-full flex justify-between items-center mb-2 px-1">
-        <span className="text-md font-bold text-gray-700">{level}%</span>
-        <div className="relative flex-grow h-2 bg-gray-200 rounded-full overflow-hidden ml-3">
-          <div
-            className="h-full bg-indigo-600 rounded-full"
-            style={{ width: `${level}%` }}
-          ></div>
-        </div>
-      </div>
+      <div className="w-full flex justify-center items-center mb-2 px-1"> 
+        <span className="text-md font-bold text-gray-700">{level}</span>
+    </div>
     </motion.div>
   );
 };
