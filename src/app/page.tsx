@@ -1,5 +1,4 @@
-// Pagina principal (hero, about, proyectos, contact)
- 
+import Hero from "../components/Hero";
 import About from "../components/About";
 import Experience from "../components/Experience";
 import Projects from "../components/Projects";
@@ -8,11 +7,13 @@ import Contact from "../components/Contact";
 
 export default function HomePage() {
   return (
-    <>  
-      {/* <Experience />
+    <>
+      <Hero />
+      <About />
+      <Experience />
       <Projects />
       <Skills />
-      <Contact /> */}
+      <Contact />
     </>
   );
 }

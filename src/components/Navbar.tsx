@@ -11,7 +11,7 @@ export default function Navbar() {
       <div className="w-full bg-black/30 backdrop-blur-md">
         <div className="max-w-8xl mx-auto px-4 h-[52px] flex items-center justify-between">
           {/* Logo / Título */}
-          <Link href="https://cam-portafolio.vercel.app/" className="text-xl font-bold text-white">
+          <Link href="/" className="text-xl font-bold text-white">
             Cam.dev
           </Link>
 
