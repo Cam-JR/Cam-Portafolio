@@ -13,7 +13,7 @@ export default function ScrollToTopButton() {
   return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-22 right-6 bg-indigo-500 p-3 rounded-full shadow-lg hover:scale-110 transition-transform z-50"
+      className="fixed bottom-22 right-2 bg-indigo-500 p-3 rounded-full shadow-lg hover:scale-110 transition-transform z-50"
       aria-label="Ir arriba"
     >
       <img
