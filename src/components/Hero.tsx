@@ -52,7 +52,7 @@ export default function Hero() {
 
           {/* Descargar CV */}
           <motion.a
-            href="/cv.pdf"
+            href="/CV-Camila Jimenez Riveros.pdf"
             download
             className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl shadow-lg hover:bg-indigo-600 transition duration-300 transform hover:-translate-y-1"
             initial={{ opacity: 0, y: 20 }}
