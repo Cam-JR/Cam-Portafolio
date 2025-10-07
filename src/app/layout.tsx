@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import WhatsappButton from "../components/WhatsappButton";
 import ScrollToTopButton from "../components/ScrollToTopButton";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: "Camila Jimenez | Frontend Developer",
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <WhatsappButton />
         <ScrollToTopButton />
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
