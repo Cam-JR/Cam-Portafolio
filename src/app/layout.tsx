@@ -1,10 +1,10 @@
 import "./globals.css";
 import { ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import WhatsappButton from "../components/WhatsappButton";
-import ScrollToTopButton from "../components/ScrollToTopButton";
-import { Analytics } from "@vercel/analytics/react";
+import ScrollToTopButton from "../components/ScrollToTopButton"; 
 
 export const metadata = {
   title: "Camila Jimenez | Frontend Developer",
