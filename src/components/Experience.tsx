@@ -43,6 +43,27 @@ type TimelineItemData = Experience | Education | Language | Achievement;
 type TabKey = 'Experiencia Profesional' | 'Educación' | 'Idiomas' | 'Logros';
 
 const EXPERIENCE_DATA: Experience[] = [
+  
+  {
+    title: 'Desarrolladora Web / Proyectos Personales',
+    company: 'Independiente',
+    period: 'Mar 2025 – Presente',
+    location: 'Lima, Perú',
+    description: [
+      'Desarrollo de proyectos personales enfocados en el front-end, aplicando buenas prácticas y nuevas tecnologías.',
+      'Creación de interfaces interactivas con React y consumo de APIs.',
+      'Optimización de rendimiento, diseño responsivo y control de versiones con Git.',
+      'Participación en comunidades y retos de programación para seguir fortaleciendo habilidades técnicas.',
+      'Mantuve un aprendizaje continuo sobre frameworks modernos y herramientas de desarrollo.',
+    ],
+    techStack: [
+      { name: 'React' },
+      { name: 'JavaScript' },
+      { name: 'CSS' },
+      { name: 'Git' },
+      { name: 'GitHub' },
+    ],
+  },
   {
     title: 'Practicante de Desarrollo Web (WordPress)',
     company: 'CaféLink Peru E.I.R.L.',
