@@ -4,6 +4,15 @@ import { Type } from "lucide-react";
 const projects = [
   {
     id: 1,
+    title: "Organizador de Archivos",
+    description: "Aplicación de escritorio que permite organizar tus archivos. Ideal para mantener carpetas ordenadas fácilmente con una interfaz visual.",
+    image: "/images/proyectos/organizadordearchivos.png",
+    tech: ["Python", "JavaScript", "CSS", "HTML"],
+    github: "https://github.com/Cam-JR/Organizador-de-archivos",
+    // demo: "#",
+  },
+  {
+    id: 2,
     title: "Portafolio Personal",
     description: "Un sitio web responsive sobre mí y mis proyectos.",
     image: "/images/proyectos/camdevportafolio.jpg",
@@ -12,7 +21,7 @@ const projects = [
     demo: "https://cam-portafolio.vercel.app/",
   },
   {
-    id: 2,
+    id: 3,
     title: "Peluquería Admin",
     description: "Panel administrativo pensado para la gestión de citas y servicios de peluquería.",
     image: "/images/proyectos/peluqueriadmin.jpg",
@@ -21,7 +30,7 @@ const projects = [
     // demo: "#",
   },
   {
-    id: 3,
+    id: 4,
     title: "Medical Center Web",
     description: "Página institucional orientada a un centro médico con apartados de servicios y contacto.",
     image: "/images/proyectos/medicalcenterweb.png",
@@ -30,7 +39,7 @@ const projects = [
     // demo: "#", 
   },
   {
-    id: 4,
+    id: 5,
     title: "Music Fest EDM",
     description: "Sitio promocional que muestra información de un festival de música y sus artistas.",
     image: "/images/proyectos/musicfestedm.jpg",
@@ -39,7 +48,7 @@ const projects = [
     demo: "https://musicfestedm.netlify.app/",
   }, 
   {
-    id: 5,
+    id: 6,
     title: "Menú Estilo KFC",
     description: "Menú digital inspirado en el estilo visual de una cadena de comida rápida.",
     image: "/images/proyectos/menuestilokfc.jpg",
@@ -48,7 +57,7 @@ const projects = [
     demo: "https://menuestilokfc.netlify.app/#",
   },
   {
-    id: 6,
+    id: 7,
     title: "Mexican Beer Bar",
     description: "Landing page que presenta la oferta de un bar con secciones de productos y servicios.",
     image: "/images/proyectos/mexicanbeerbar.jpg",
@@ -57,7 +66,7 @@ const projects = [
     demo: "https://webarcerveza.netlify.app/#",
   },
   {
-    id: 7,
+    id: 8,
     title: "Blog de Café",
     description: "Blog diseñado con un estilo moderno y enfocado en artículos relacionados al café.",
     image: "/images/proyectos/blogdecafe.jpg",
