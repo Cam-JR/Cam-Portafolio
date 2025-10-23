@@ -16,7 +16,7 @@ const projects = [
     title: "Portafolio Personal",
     description: "Un sitio web responsive sobre mí y mis proyectos.",
     image: "/images/proyectos/camdevportafolio.jpg",
-    tech: ["TypeScript", "JavaScript", "CSS"],
+    tech: ["TypeScript", "JavaScript", "CSS", "React"],
     github: "https://github.com/Cam-JR/Cam-Portafolio",
     demo: "https://cam-portafolio.vercel.app/",
   },
