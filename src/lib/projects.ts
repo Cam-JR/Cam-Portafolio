@@ -3,6 +3,15 @@ import { Type } from "lucide-react";
 //projects.ts
 const projects = [
   {
+    id: 0,
+    title: "PLATE | Healthy Meals Delivered",
+    description: "Landing page moderna y responsiva para un servicio de comidas saludables a domicilio.",
+    image: "/images/proyectos/ladingpageplate.jpg",
+    tech: ["HTML", "JavaScript", "CSS", "Bootstrap"],
+    github: "https://github.com/Cam-JR/LandingPage-Plate",
+    demo: "https://luminous-gaufre-50b0db.netlify.app/#",
+  },
+  {
     id: 1,
     title: "Organizador de Archivos",
     description: "Aplicación de escritorio que permite organizar tus archivos. Ideal para mantener carpetas ordenadas fácilmente con una interfaz visual.",
