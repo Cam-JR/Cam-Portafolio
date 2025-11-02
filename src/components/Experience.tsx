@@ -133,8 +133,8 @@ const LANGUAGES_DATA: Language[] = [
 ];
 
 const ACHIEVEMENTS_DATA: Achievement[] = [
-  { title: 'Complete Web & Mobile Designer: UI/UX, Figma, +more', institution: 'Udemy/Andrei Neagoie & Daniel Schifano', year: 'En Proceso' },
   { title: 'Especialización en Programación Web y Apps', institution: 'Netzun', year: 'En Proceso' },
+  { title: 'Complete Web & Mobile Designer: UI/UX, Figma, +more', institution: 'Udemy/Andrei Neagoie & Daniel Schifano', year: 'Oct 2025' },
   { title: 'Desarrollo Web Completo con HTML5, CSS3, JS, AJAX, PHP y MySQL', institution: 'Udemy/Juan Pablo de la Torre Valdez', year: 'Jul 2025' },
   { title: 'Diseño Web Moderno Desde Cero a Avanzado HTML5 y CSS3', institution: 'Udemy/Jordan Alexander', year: 'May 2025' },
   { title: 'Base de Datos Relacionales - SQL', institution: 'IDAT', year: 'Jun - Aug 2023' },
