@@ -19,8 +19,9 @@ const personalData = [
 const interests = [
   "Desarrollo Frontend",
   "React.js",
+  "Angular",
   "UI/UX Design",
-  "Tecnologías Web",
+  "Python",
 ];
 
 export default function About() {

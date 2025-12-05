@@ -40,7 +40,7 @@ type Achievement = {
 // Tipo de Unión para los datos de cualquier pestaña (Corrige el error de 'any')
 type TimelineItemData = Experience | Education | Language | Achievement; 
 
-type TabKey = 'Experiencia Profesional' | 'Educación' | 'Idiomas' | 'Logros';
+type TabKey = 'Experiencia Profesional' | 'Educación' | 'Idiomas' | 'Cursos';
 
 const EXPERIENCE_DATA: Experience[] = [
   
@@ -69,15 +69,19 @@ const EXPERIENCE_DATA: Experience[] = [
     company: 'CaféLink Peru E.I.R.L.',
     period: 'Feb 2024 – Jul 2024',
     location: 'Santiago de Surco, Lima',
-    description: [
-      'Participé en la migración del sitio web corporativo a WordPress, facilitando la gestión de contenidos.',
-      'Actualicé información en línea (precios, imágenes, artículos), mejorando la presencia digital de la marca.',
+    description: [ 
+      'Participé en el rediseño del sitio web corporativo, migrándolo de HTML/CSS a WordPress para mejorar la gestión de contenidos.',
+      'Migré y optimicé un sitio e-commerce con WordPress y WooCommerce, mejorando el rendimiento y la escalabilidad.',
+      'Implementé un chatbot conectado a WhatsApp API (Wasapi) para automatizar consultas.',
+      'Actualicé información en línea (precios, imágenes, artículos del blog), fortaleciendo la presencia digital de la marca.',
     ],
     techStack: [
       { name: 'WordPress' },
       { name: 'HTML' },
       { name: 'CSS' },
+      { name: 'JavaScript' },
       { name: 'PHP' },
+      { name: 'Wasapi' },
     ],
   },
   {
@@ -87,13 +91,16 @@ const EXPERIENCE_DATA: Experience[] = [
     location: 'San Juan de Lurigancho, Lima',
     description: [
       'Diseñé y desarrollé una página web con secciones de noticias, eventos y matrícula online.',
-      'Implementé un sistema que mejoró la comunicación con padres durante el proceso de inscripción.',
+      'Implementé un sistema que mejoró la comunicación con padres durante el proceso de matricula.',
     ],
     techStack: [
       { name: 'HTML' },
       { name: 'CSS' },
       { name: 'JavaScript' },
       { name: 'Bootstrap' },
+      { name: 'Git' },
+      { name: 'GitHub' },
+      { name: 'Figma' },
     ],
   },
   {
@@ -102,12 +109,19 @@ const EXPERIENCE_DATA: Experience[] = [
     period: 'Mar 2023 – Aug 2023',
     location: 'Chorrillos, Lima',
     description: [
-      'Diseñé una base de datos en MySQL para la gestión de pedidos, optimizando procesos internos.',
-      'Desarrollé un sistema de seguimiento en tiempo real, mejorando la transparencia y satisfacción del cliente.',
+      'Participé en un proyecto en equipo para crear una base de datos completa en MySQL que registraba y organizaba todos los pedidos.',
+      'Diseñé y estructuré la base de datos para optimizar el flujo de información.',
+      'Colaboré en la creación de una página en Wix orientada a mostrar los productos y servicios de la empresa.',
+      'Desarrollé un sistema de seguimiento de pedidos en tiempo real, aumentando la transparencia y la eficiencia del proceso.',
     ],
     techStack: [
       { name: 'MySQL' },
       { name: 'PHP' },
+      { name: 'HTML' },
+      { name: 'CSS' },
+      { name: 'JavaScript' }, 
+      { name: 'Git' },
+      { name: 'GitHub' },
     ],
   },
 ];
@@ -118,13 +132,7 @@ const EDUCATION_DATA: Education[] = [
     company: 'SENATI',
     period: 'Feb 2021 – Jun 2024',
     location: 'Villa el Salvador, Lima',
-  },
-  {
-    title: 'Base de Datos Relacionales - SQL',
-    company: 'IDAT',
-    period: 'Jun 2023 – Aug 2023',
-    location: 'San Juan de Lurigancho, Lima',
-  },
+  }, 
 ];
 
 const LANGUAGES_DATA: Language[] = [
@@ -134,9 +142,9 @@ const LANGUAGES_DATA: Language[] = [
 
 const ACHIEVEMENTS_DATA: Achievement[] = [
   { title: 'Especialización en Programación Web y Apps', institution: 'Netzun', year: 'En Proceso' },
-  { title: 'Complete Web & Mobile Designer: UI/UX, Figma, +more', institution: 'Udemy/Andrei Neagoie & Daniel Schifano', year: 'Oct 2025' },
-  { title: 'Desarrollo Web Completo con HTML5, CSS3, JS, AJAX, PHP y MySQL', institution: 'Udemy/Juan Pablo de la Torre Valdez', year: 'Jul 2025' },
-  { title: 'Diseño Web Moderno Desde Cero a Avanzado HTML5 y CSS3', institution: 'Udemy/Jordan Alexander', year: 'May 2025' },
+  { title: 'Universidad Desarrollo Web - Front-end Web Developer', institution: 'Udemy', year: 'Noviembre 2025' },
+  { title: 'Complete Web & Mobile Designer: UI/UX, Figma, +more', institution: 'Udemy', year: 'Oct 2025' },
+  { title: 'Desarrollo Web Completo con HTML5, CSS3, JS, AJAX, PHP y MySQL', institution: 'Udemy', year: 'Jul 2025' },
   { title: 'Base de Datos Relacionales - SQL', institution: 'IDAT', year: 'Jun - Aug 2023' },
 ];
 
@@ -144,7 +152,7 @@ const TAB_DATA: Record<TabKey, { data: TimelineItemData[] }> = {
   'Experiencia Profesional': { data: EXPERIENCE_DATA },
   'Educación': { data: EDUCATION_DATA },
   'Idiomas': { data: LANGUAGES_DATA },
-  'Logros': { data: ACHIEVEMENTS_DATA },
+  'Cursos': { data: ACHIEVEMENTS_DATA },
 };
 
 const TABS: TabKey[] = Object.keys(TAB_DATA) as TabKey[];
@@ -167,7 +175,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   title, company, period, location, description, level, institution, year, techStack, activeTab
 }) => {
   const isLanguage = activeTab === 'Idiomas';
-  const isAchievement = activeTab === 'Logros';
+  const isAchievement = activeTab === 'Cursos';
   const isEducation = activeTab === 'Educación';
   const isExperience = activeTab === 'Experiencia Profesional';
 
@@ -253,7 +261,7 @@ export default function About() {
         Mi experiencia
       </h2>
       <p className="text-base text-gray-600   text-center mb-7 transition-colors duration-500">
-        Un viaje a través de mi crecimiento profesional, formación, idiomas y logros.
+        Un viaje a través de mi crecimiento profesional, formación, idiomas y cursos.
       </p>
 
       {/* Tabs */}
@@ -272,7 +280,7 @@ export default function About() {
               {tab === 'Experiencia Profesional' && <FaBriefcase className="h-5 w-5 mr-1 sm:mr-2" />}
               {tab === 'Educación' && <FaGraduationCap className="h-5 w-5 mr-1 sm:mr-2" />}
               {tab === 'Idiomas' && <FaGlobe className="h-5 w-5 mr-1 sm:mr-2" />}
-              {tab === 'Logros' && <FaAward className="h-5 w-5 mr-1 sm:mr-2" />}
+              {tab === 'Cursos' && <FaAward className="h-5 w-5 mr-1 sm:mr-2" />}
               {tab}
             </button>
           ))}

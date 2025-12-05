@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-// --- Estructura de Datos (sin cambios) ---
+// --- Estructura de Datos 
 
 type Skill = {
   name: string;
@@ -15,29 +15,37 @@ type SkillCategory = 'Programming' | 'Frontend' | 'Backend' | 'Tools';
 
 const SKILLS_DATA: Record<SkillCategory, Skill[]> = {
   Programming: [
-    { name: 'JavaScript', level: "Nivel - Intermedio", category: 'Language', icon: '/icons/javascript.svg' },
-    { name: 'PHP', level: "Nivel - Básico", category: 'Language', icon: '/icons/php.svg' },
+      { name: 'JavaScript', level: "Nivel - Intermedio", category: 'Programming', icon: '/icons/javascript.svg' },
+      { name: 'Python', level: "Nivel - Básico", category: 'Programming', icon: '/icons/python.svg' },
+      { name: 'PHP', level: "Nivel - Básico", category: 'Programming', icon: '/icons/php.svg' }
   ],
+
   Frontend: [
-    { name: 'React.js', level: "Nivel - Básico", category: 'Framework', icon: '/icons/react.svg' },
-    { name: 'Next.js', level: "Nivel - Básico", category: 'Framework', icon: '/icons/nextdotjs.svg' },
-    { name: 'Tailwind CSS', level: "Nivel - Básico", category: 'CSS', icon: '/icons/tailwindcss.svg' },
-    { name: 'HTML5', level: "Nivel - Intermedio", category: 'Markup', icon: '/icons/html.svg' },
-    { name: 'CSS3', level: "Nivel- Intermedio", category: 'Styling', icon: '/icons/css.svg' },
-    { name: 'Bootstrap', level: "Nivel - Básico", category: 'Framework', icon: "/icons/bootstrap.svg" },
+      { name: 'React.js', level: "Nivel - Básico", category: 'Framework', icon: '/icons/react.svg' },   
+      { name: 'HTML5', level: "Nivel - Intermedio", category: 'Markup', icon: '/icons/html.svg' },
+      { name: 'CSS3', level: "Nivel - Intermedio", category: 'Styling', icon: '/icons/css.svg' },
+      { name: 'JavaScript', level: "Nivel - Intermedio", category: 'Programming', icon: '/icons/javascript.svg' },
+      { name: 'Bootstrap', level: "Nivel - Intermedio", category: 'Framework', icon: '/icons/bootstrap.svg' },
+      { name: 'UX/UI Design', level: "Nivel - Intermedio", category: 'Design', icon: '/icons/figma.svg' },
   ],
+
   Backend: [
-    { name: 'Laravel', level: "Nivel - Básico", category: 'Framework', icon: '/icons/laravel.svg' },
-    { name: 'MySQL', level: "Nivel - Intermedio", category: 'Database', icon: '/icons/mysql.svg' },
+      { name: 'Laravel', level: "Nivel - Básico", category: 'Framework', icon: '/icons/laravel.svg' },
+      { name: 'MySQL', level: "Nivel - Intermedio", category: 'Database', icon: '/icons/mysql.svg' },
+      { name: 'PHP', level: "Nivel - Básico", category: 'Language', icon: '/icons/php.svg' }
   ],
+
+
   Tools: [
-    { name: 'Git', level: "Nivel - Básico", category: 'Version Control', icon: '/icons/git.svg' },
-    { name: 'GitHub', level: "Nivel - Básico", category: 'Version Control', icon: '/icons/github1.svg' },
+    { name: 'Git', level: "Nivel - Intermedio", category: 'Version Control', icon: '/icons/git.svg' },
+    { name: 'GitHub', level: "Nivel - Intermedio", category: 'Version Control', icon: '/icons/github1.svg' },
     { name: 'Netlify', level: "Nivel - Intermedio", category: 'Deployment', icon: '/icons/netlify.svg' },
-    { name: 'Figma', level: "Nivel - básico ", category: 'Design', icon: '/icons/figma.svg' },
+    { name: 'Figma', level: "Nivel - Intermedio", category: 'Design', icon: '/icons/figma.svg' }, 
     { name: 'VS Code', level: "Nivel - Intermedio", category: 'Editor', icon: '/icons/vscode.svg' },
-    { name: 'Notion', level: "Nivel - Intermedio", category: 'Productivity', icon: '/icons/notion.svg' },
-  ],
+    { name: 'Postman', level: "Nivel - Básico", category: 'API Testing', icon: '/icons/postman.svg' }, 
+    { name: 'Notion', level: "Nivel - Intermedio", category: 'Productivity', icon: '/icons/notion.svg' }, 
+    { name: 'WordPress', level: "Nivel - Intermedio", category: 'CMS', icon: '/icons/wordpress.svg' },   
+  ], 
 };
 
 const TABS: SkillCategory[] = Object.keys(SKILLS_DATA) as SkillCategory[];
