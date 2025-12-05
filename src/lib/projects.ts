@@ -5,7 +5,7 @@ const projects = [
   {
     id: 11,
     title: "DentCare",
-    description:"Sistema web de gestión dental, diseñado para optimizar la administración, permite controlar bases de datos de pacientes,automatizar procesos clave en el flujo de atención odontológica.",
+    description:"Diseñado para optimizar la administración, permite controlar bases de datos de pacientes,automatizar procesos clave en el flujo de atención odontológica.",
     image: "/images/proyectos/dentcare.png ",
     tech: ["HTML", "CSS", "JavaScript", "MySQL", "React", "UX/UI"],  
     github: "https://github.com/Cam-JR/DentCare",
