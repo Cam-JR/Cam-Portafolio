@@ -110,15 +110,13 @@ const EXPERIENCE_DATA: Experience[] = [
 ];
 
 const ACHIEVEMENTS_DATA: Achievement[] = [
-  { title: 'Digital safety and security awareness', institution: 'Cisco', year: '2025', certificateUrl: '#' },
-  { title: 'Ia y herramientas digitales', institution: 'DECYGO', year: '2025', certificateUrl: '#' },
-  { title: 'Design Thinking', institution: 'Fundación Telefónica del Perú', year: '2024', certificateUrl: '#' },
-  { title: 'Marketing Digital', institution: 'Fundación Telefónica del Perú', year: '2024', certificateUrl: '#' },
-  { title: 'Java Fundamentals', institution: 'Oracle', year: '2023', certificateUrl: '#' },
-  { title: 'Red Hat System Administration I (RH124)', institution: 'Red Hat', year: '2023', certificateUrl: '#' },
-  { title: 'Especialización en Programación Web y Apps', institution: 'Netzun', year: '2025', certificateUrl: '#' },
+  { title: 'Intermediate Program Of English', institution: 'Britanico', year: '2025', certificateUrl: '#' },
+  { title: 'Desarrollo Web Completo con HTML5, CSS3, JS, AJAX, PHP y MySQL', institution: 'Fundación Telefónica del Perú', year: '2025', certificateUrl: '#' },
+  { title: 'WordPress', institution: 'Udemy', year: '2025', certificateUrl: '#' },
   { title: 'Universidad Desarrollo Web - Front-end Web Developer', institution: 'Udemy', year: '2025', certificateUrl: '#' },
   { title: 'Complete Web & Mobile Designer: UI/UX, Figma, +more', institution: 'Udemy', year: '2025', certificateUrl: '#' },
+  { title: 'SQL BASE DE DATOS RELACIONALES', institution: 'IDAT', year: '2023', certificateUrl: '#' },
+  { title: 'Database Design', institution: 'Oracle Academy', year: '2022', certificateUrl: '#' },
 ];
 
 // Componente de tarjeta de experiencia
