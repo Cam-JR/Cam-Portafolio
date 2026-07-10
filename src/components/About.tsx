@@ -17,9 +17,12 @@ const personalData = [
 const interests = [
   "Desarrollo Frontend",
   "React.js",
-  "Angular",
+  "Next.js",
   "UI/UX Design",
   "Python",
+  "Desarrollo Full Stack",
+  "APIs REST",
+  "Cloud Computing",
 ];
 
 export default function About() {
@@ -46,12 +49,9 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
           viewport={{ once: false }}
-        >
-          Me apasiona el desarrollo frontend y actualmente trabajo en proyectos
-          propios y como freelance. Me centro en escribir código limpio y
-          escalable, diseñar interfaces centradas en la experiencia de usuario
-          (UX/UI) y cuidar cada detalle para lograr aplicaciones web útiles,
-          confiables y atractivas que las personas realmente disfruten utilizar.
+        > 
+          Desarrolladora Frontend enfocada en la creación de aplicaciones web modernas y orientadas a la experiencia del usuario. Tengo experiencia desarrollando proyectos con tecnologías web actuales, aplicando principios de código limpio, arquitectura escalable y buenas prácticas de desarrollo. Me apasiona transformar ideas en soluciones digitales funcionales, combinando desarrollo frontend y diseño UX/UI para crear productos intuitivos, eficientes y de alto valor para los usuarios.
+          
         </motion.p>
 
         {/* --- Grid de Información Personal --- */}
