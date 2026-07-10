@@ -12,6 +12,7 @@ type Props = {
   demo?: string;
   isActive?: boolean;
   darkMode?: boolean;
+  onClick?: () => void;
 };
 
 export default function ProjectCard({
@@ -23,6 +24,7 @@ export default function ProjectCard({
   demo,
   isActive = false,
   darkMode = false,
+  onClick,
 }: Props) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [style, setStyle] = useState({
@@ -61,15 +63,16 @@ export default function ProjectCard({
       ref={ref}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
+      onClick={onClick}
       whileHover={{ translateY: -6 }}
       transition={{ type: 'spring', stiffness: 300, damping: 18 }}
       style={style}
       className={`rounded-2xl overflow-hidden transform-gpu will-change-transform transition duration-500 
         ${
           darkMode
-            ? 'bg-[#0f172a]/80 border border-gray-700/40 shadow-lg shadow-indigo-500/10 backdrop-blur-md text-gray-100'
-            : 'bg-white border border-gray-200 shadow-md text-gray-900'
-        } ${isActive ? 'ring-2 ring-indigo-500/40' : 'ring-0'}`}
+            ? 'bg-[#03020D]/90 border border-[#4F39F6]/30 shadow-lg shadow-[#4F39F6]/15 backdrop-blur-md text-gray-100'
+            : 'bg-white border border-[#4F39F6]/20 shadow-md text-gray-900'
+        } ${isActive ? 'ring-2 ring-[#4F39F6]/40' : 'ring-0'}`}
     >
       <div className="relative w-full aspect-[16/12] overflow-hidden">
         <img
@@ -110,8 +113,8 @@ export default function ProjectCard({
               className={`px-3 py-1 rounded-full text-xs font-medium transition 
                 ${
                   darkMode
-                    ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
-                    : 'bg-indigo-100 text-indigo-700'
+                    ? 'bg-[#4F39F6]/15 text-[#EDE9FF] border border-[#4F39F6]/30'
+                    : 'bg-[#F2EBFF] text-[#4F39F6]'
                 }`}
             >
               {t}
@@ -121,7 +124,7 @@ export default function ProjectCard({
 
         <div
           className={`flex gap-4 ${
-            darkMode ? 'text-indigo-300' : 'text-indigo-500'
+            darkMode ? 'text-[#CFC7FF]' : 'text-[#4F39F6]'
           }`}
         >
           <a href={github} target="_blank" rel="noreferrer" className="hover:underline">

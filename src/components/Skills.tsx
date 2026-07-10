@@ -1,183 +1,137 @@
 'use client'
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-
-// --- Estructura de Datos 
 
 type Skill = {
   name: string;
-  level: string;
-  category: string;
   icon?: string;
 };
 
-type SkillCategory = 'Programming' | 'Frontend' | 'Backend' | 'Tools';
+const ALL_SKILLS: Skill[] = [
+  // Frontend
+  { name: 'HTML5', icon: '/icons/html.svg' },
+  { name: 'CSS3', icon: '/icons/css.svg' },
+  { name: 'JavaScript', icon: '/icons/javascript.svg' },
+  { name: 'TypeScript', icon: '/icons/typescript-icon.svg' },
+  { name: 'React', icon: '/icons/react.svg' },
+  { name: 'Next.js', icon: '/icons/nextjs-icon.svg' },
+  { name: 'Tailwind CSS', icon: '/icons/tailwind.svg' },
+  { name: 'Bootstrap', icon: '/icons/bootstrap.svg' },
 
-const SKILLS_DATA: Record<SkillCategory, Skill[]> = {
-  Programming: [
-      { name: 'JavaScript', level: "Nivel - Intermedio", category: 'Programming', icon: '/icons/javascript.svg' },
-      { name: 'Python', level: "Nivel - Básico", category: 'Programming', icon: '/icons/python.svg' },
-      { name: 'PHP', level: "Nivel - Básico", category: 'Programming', icon: '/icons/php.svg' }
-  ],
+  // Backend
+  { name: 'Node.js', icon: '/icons/nodejs-icon.svg' },
+  { name: 'PHP', icon: '/icons/php.svg' },
+  { name: 'Laravel', icon: '/icons/laravel.svg' },
+  { name: 'Python', icon: '/icons/python.svg' },
 
-  Frontend: [
-      { name: 'React.js', level: "Nivel - Básico", category: 'Framework', icon: '/icons/react.svg' },   
-      { name: 'HTML5', level: "Nivel - Intermedio", category: 'Markup', icon: '/icons/html.svg' },
-      { name: 'CSS3', level: "Nivel - Intermedio", category: 'Styling', icon: '/icons/css.svg' },
-      { name: 'JavaScript', level: "Nivel - Intermedio", category: 'Programming', icon: '/icons/javascript.svg' },
-      { name: 'Bootstrap', level: "Nivel - Intermedio", category: 'Framework', icon: '/icons/bootstrap.svg' },
-      { name: 'UX/UI Design', level: "Nivel - Intermedio", category: 'Design', icon: '/icons/figma.svg' },
-  ],
+  // Base de datos
+  { name: 'MySQL', icon: '/icons/mysql.svg' },
 
-  Backend: [
-      { name: 'Laravel', level: "Nivel - Básico", category: 'Framework', icon: '/icons/laravel.svg' },
-      { name: 'MySQL', level: "Nivel - Intermedio", category: 'Database', icon: '/icons/mysql.svg' },
-      { name: 'PHP', level: "Nivel - Básico", category: 'Language', icon: '/icons/php.svg' }
-  ],
+  // Control de versiones
+  { name: 'Git', icon: '/icons/git.svg' },
+  { name: 'GitHub', icon: '/icons/github-icon.svg' },
 
+  // Herramientas
+  { name: 'Figma', icon: '/icons/figma.svg' }, 
+  { name: 'Postman', icon: '/icons/postman.svg' },
+  { name: 'VS Code', icon: '/icons/vscode.svg' },
+  { name: 'WordPress', icon: '/icons/wordpress.svg' },
+  { name: 'WooCommerce', icon: '/icons/woocommerce-icon.svg' },
+  { name: 'Azure', icon: '/icons/microsoft-azure.svg' },
+  { name: 'Netlify', icon: '/icons/netlify.svg' },
+  { name: 'Notion', icon: '/icons/notion-icon.svg' },
+];
 
-  Tools: [
-    { name: 'Git', level: "Nivel - Intermedio", category: 'Version Control', icon: '/icons/git.svg' },
-    { name: 'GitHub', level: "Nivel - Intermedio", category: 'Version Control', icon: '/icons/github1.svg' },
-    { name: 'Netlify', level: "Nivel - Intermedio", category: 'Deployment', icon: '/icons/netlify.svg' },
-    { name: 'Figma', level: "Nivel - Intermedio", category: 'Design', icon: '/icons/figma.svg' }, 
-    { name: 'VS Code', level: "Nivel - Intermedio", category: 'Editor', icon: '/icons/vscode.svg' },
-    { name: 'Postman', level: "Nivel - Básico", category: 'API Testing', icon: '/icons/postman.svg' }, 
-    { name: 'Notion', level: "Nivel - Intermedio", category: 'Productivity', icon: '/icons/notion.svg' }, 
-    { name: 'WordPress', level: "Nivel - Intermedio", category: 'CMS', icon: '/icons/wordpress.svg' },   
-  ], 
-};
-
-const TABS: SkillCategory[] = Object.keys(SKILLS_DATA) as SkillCategory[];
-
-// --- Variantes de Animación ---
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05, // Retraso entre la aparición de cada tarjeta
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
-};
-
-// --- Componente Reutilizable para la Tarjeta de Habilidad ---
+// Componente SkillCard simplificado
 interface SkillCardProps {
-  level: string;
   name: string;
-  category: string;
   icon?: string;
 }
 
-const SkillCard: React.FC<SkillCardProps> = ({ level, name, category, icon }) => {
+const SkillCard: React.FC<SkillCardProps> = ({ name, icon }) => {
   return (
-    <motion.div
-      className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center"
-      variants={itemVariants}
-    >
+    <div className="flex-shrink-0 w-32 h-40 md:w-40 md:h-48 flex flex-col items-center justify-center bg-gradient-to-br from-[#03020D] to-[#0A0A1F] border border-[#4F39F6]/25 rounded-2xl shadow-lg hover:border-[#4F39F6] hover:shadow-xl hover:shadow-[#4F39F6]/20 transition-all duration-300 p-4">
       {icon && (
-        <img src={icon} alt={name} className="w-12 h-12 object-contain mb-3" />
+        <img src={icon} alt={name} className="w-16 h-16 md:w-20 md:h-20 object-contain mb-3" />
       )}
-      <h4 className="text-lg font-semibold text-gray-800 mb-1">{name}</h4>
-      <span className="text-sm font-medium text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full mb-3">
-        {category}
-      </span>
-      <div className="w-full flex justify-center items-center mb-2 px-1"> 
-        <span className="text-md font-bold text-gray-700">{level}</span>
+      <p className="text-white font-semibold text-center text-sm md:text-base">{name}</p>
     </div>
-    </motion.div>
   );
 };
 
-// --- Componente Principal `Skills` con Animación al hacer Scroll ---
+// Componente CarrouselRow
+interface CarrouselRowProps {
+  skills: Skill[];
+}
 
-export default function Skills() {
-  const [activeTab, setActiveTab] = useState<SkillCategory>('Programming');
+const CarrouselRow: React.FC<CarrouselRowProps> = ({ skills }) => {
+  const duplicatedSkills = [...skills, ...skills];
 
   return (
-    <section id="skills" className="py-16 bg-gray-50">
-      <div className="container mx-auto px-6">
-        <motion.h2
-          className="text-4xl font-extrabold mb-10 text-center text-gray-900"
+    <div className="overflow-hidden">
+      <motion.div
+        className="flex w-max gap-4 md:gap-6"
+        animate={{ x: ['0%', '-50%'] }}
+        transition={{
+          duration: 16,
+          repeat: Infinity,
+          ease: 'linear',
+        }}
+        style={{ willChange: 'transform' }}
+      >
+        {duplicatedSkills.map((skill, index) => (
+          <SkillCard key={`${skill.name}-${index}`} {...skill} />
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
+// Componente Principal
+export default function Skills() {
+  const firstHalf = ALL_SKILLS.slice(0, Math.ceil(ALL_SKILLS.length / 2));
+  const secondHalf = ALL_SKILLS.slice(Math.ceil(ALL_SKILLS.length / 2));
+
+  return (
+    <section id="skills" className="py-20 bg-gradient-to-b from-[#0A0A1F] via-[#03020D] to-[#0A0A1F] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Título */}
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ amount: 0.5 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          Skills
-        </motion.h2>
+          <h2 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-[#4F39F6] via-[#6C5CE7] to-[#03020D] bg-clip-text text-transparent mb-4">
+            Skills
+          </h2>
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+            Herramientas y tecnologías que utilizo en mis proyectos
+          </p>
+        </motion.div>
 
-        {/* --- Contenedor de Pestañas (Tabs) --- */}
-        <div className="flex justify-center mb-10 mx-4"> 
-          <div className="flex p-1 bg-white rounded-xl shadow-md border border-gray-100 overflow-x-auto whitespace-nowrap">
-            {TABS.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`flex items-center px-3 py-2 sm:px-4 rounded-lg text-sm font-medium transition duration-300 ease-in-out ${
-                  activeTab === tab
-                    ? 'bg-indigo-700 text-white shadow-lg'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800'
-                }`}
-              >
-                {tab === 'Programming' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 4l-4 4 4 4" />
-                  </svg>
-                )}
-                {tab === 'Frontend' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1l-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                )}
-                {tab === 'Backend' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5v-3m0 0l-4-4m4 4l-4 4m-4-4H3" />
-                  </svg>
-                )}
-                {tab === 'Tools' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                )}
-                {tab}
-              </button>
-            ))}
+        {/* Carruseles */}
+        <div className="space-y-8 md:space-y-12">
+          {/* Primera fila */}
+          <div className="relative">
+            <CarrouselRow skills={firstHalf} />
+            <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-[#0A0A1F] to-transparent pointer-events-none z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-[#0A0A1F] to-transparent pointer-events-none z-10"></div>
+          </div>
+
+          {/* Segunda fila */}
+          <div className="relative">
+            <CarrouselRow skills={secondHalf} />
+            <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-[#0A0A1F] to-transparent pointer-events-none z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-[#0A0A1F] to-transparent pointer-events-none z-10"></div>
           </div>
         </div>
-
-        {/* --- Contenido de las Habilidades (Grid) con Animación al Scroll --- */}
-        <motion.div
-          key={activeTab} // Mantener el key para la transición de pestañas
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible" // <-- Usa whileInView para animar al entrar en la vista
-          viewport={{ amount: 0.2 }} // Ajusta 'amount' según cuánto del elemento debe ser visible
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 max-w-6xl mx-auto"
-        >
-          {SKILLS_DATA[activeTab].map((skill: Skill) => (
-            <SkillCard
-              key={skill.name}
-              name={skill.name}
-              level={skill.level}
-              category={skill.category}
-              icon={skill.icon}
-            />
-          ))}
-        </motion.div>
       </div>
+
+      {/* Decoración de fondo */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-[#4F39F6]/10 rounded-full blur-3xl pointer-events-none opacity-20"></div>
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#03020D]/50 rounded-full blur-3xl pointer-events-none opacity-20"></div>
     </section>
   );
 }

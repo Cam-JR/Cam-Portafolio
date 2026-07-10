@@ -1,114 +1,130 @@
 'use client';
 import { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation, EffectCoverflow, Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import projects from '../lib/projects';
 import ProjectCard from './ProjectCard';
-import { Sun, Moon } from "lucide-react";
-
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import 'swiper/css/effect-coverflow';
+import { Sun, Moon } from 'lucide-react';
 
 export default function Projects() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [darkMode, setDarkMode] = useState(true); // lo pongo en true por defecto
+  const [darkMode, setDarkMode] = useState(true);
+  const categories = ['Todos', 'Website', 'Blog', 'Personal'] as const;
+  type Category = typeof categories[number];
+  const [activeCategory, setActiveCategory] = useState<Category>('Todos');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  type Project = {
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+    tech: string[];
+    github?: string;
+    demo?: string;
+    category?: string;
+  };
+
+  const filtered = (projects as Project[])
+    .filter((p: Project) => (activeCategory === 'Todos' ? true : p.category === activeCategory))
+    .slice(0, 9);
 
   return (
     <section
       id="projects"
-      className={`py-4 relative overflow-hidden transition-colors duration-700 ${
-        darkMode
-          ? 'bg-[#0a0a1f] text-gray-100'
-          : 'bg-white text-gray-900'
+      className={`py-12 relative overflow-hidden transition-colors duration-700 ${
+        darkMode ? 'bg-[#0a0a1f] text-gray-100' : 'bg-white text-gray-900'
       }`}
     >
-      {/* Fondo degradado animado */}
-      <motion.div
-        aria-hidden
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="absolute inset-0 -z-10"
-      >
-        <div
-          className={`w-full h-full ${
-            darkMode
-              ? 'bg-gradient-to-br from-[#0a0a1f] via-[#1e1e2f] to-black'
-              : 'bg-gradient-to-br from-indigo-50 to-white'
-          }`}
-        />
+      <motion.div aria-hidden initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} className="absolute inset-0 -z-10">
+        <div className={`${darkMode ? 'bg-gradient-to-br from-[#0a0a1f] via-[#1e1e2f] to-black' : 'bg-gradient-to-br from-indigo-50 to-white'} w-full h-full`} />
       </motion.div>
 
-      <h2
-        className={`text-4xl font-extrabold mb-6 text-center drop-shadow-md ${
-          darkMode ? 'text-white' : 'text-gray-900'
-        }`}
-      >
-        Proyectos
+      <h2 className={`text-4xl md:text-5xl font-extrabold mb-6 text-center drop-shadow-md ${darkMode ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#4F39F6] via-[#6C5CE7] to-[#03020D]' : 'text-[#4F39F6]'}`}>
+        Mi Portafolio
+        <br />
+        <br />
       </h2>
 
-      {/* Botón para activar dark mode */}
-      <div className="text-center mb-10">
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="flex-center   gap-2 px-4 py-3 rounded-lg bg-indigo-500 text-white font-semibold hover:bg-indigo-600 transition"
-        >
-          {darkMode ? (
-            <>
-              <Sun className="w-5 h-5" /> 
-            </>
-          ) : (
-            <>
-              <Moon className="w-5 h-5" /> 
-            </>
-          )}
-        </button>
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex items-center justify-between mb-8 gap-4 flex-wrap">
+          <div className="flex items-center gap-3">
+            {categories.map((cat) => {
+              const active = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300 ${
+                    active
+                      ? 'border-[#4F39F6] bg-[#4F39F6]/20 text-[#F4F0FF] shadow-lg shadow-[#4F39F6]/20'
+                      : 'border-[#4F39F6]/30 bg-[#03020D] text-gray-300 hover:border-[#4F39F6] hover:text-white'
+                  }`}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
+
+          <div>
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#4F39F6] text-white font-semibold hover:bg-[#3D2AC4] transition"
+            >
+              {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filtered.map((p: Project, index: number) => (
+            <motion.div key={p.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: index * 0.05 }} viewport={{ once: true }} className="h-full">
+              <ProjectCard
+                {...p}
+                github={p.github ?? '#'}
+                isActive={false}
+                darkMode={true}
+                onClick={() => setSelectedProject(p)}
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4">
-        <Swiper
-          effect="coverflow"
-          grabCursor
-          centeredSlides
-          spaceBetween={40}
-          slidesPerView={1.05}
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 0,
-            depth: 160,
-            modifier: 1.1,
-            slideShadows: false,
-          }}
-          breakpoints={{
-            640: { slidesPerView: 1.05 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-          pagination={{ clickable: true }}
-          navigation
-          modules={[Pagination, Navigation, EffectCoverflow, Autoplay]}
-          onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-          autoplay={{ delay: 4500, disableOnInteraction: true }}
-          className="py-8"
-        >
-          {projects.map((p, index) => (
-            <SwiperSlide key={p.id} className="flex justify-center">
-              <motion.div
-                initial={{ opacity: 0, y: 30, scale: 0.96 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.07 }}
-                viewport={{ once: false }}
-                className="w-full max-w-[340px]"
-              >
-                <ProjectCard {...p} isActive={index === activeIndex} darkMode={darkMode} />
-              </motion.div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      {selectedProject ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4" onClick={() => setSelectedProject(null)}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-2xl rounded-2xl border border-[#4F39F6]/30 bg-[#03020D] p-6 shadow-2xl shadow-[#4F39F6]/20"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#4F39F6]">{selectedProject.category ?? 'Proyecto'}</p>
+                <h3 className="mt-2 text-2xl font-bold text-white">{selectedProject.title}</h3>
+              </div>
+              <button onClick={() => setSelectedProject(null)} className="rounded-full border border-[#4F39F6]/40 px-3 py-1 text-sm text-[#F4F0FF]">Cerrar</button>
+            </div>
+
+            <img src={selectedProject.image} alt={selectedProject.title} className="mt-5 h-56 w-full rounded-xl object-cover" />
+            <p className="mt-5 text-sm leading-7 text-gray-300">{selectedProject.description}</p>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              {selectedProject.tech.map((tech) => (
+                <span key={tech} className="rounded-full border border-[#4F39F6]/30 bg-[#4F39F6]/10 px-3 py-1 text-xs font-semibold text-[#EDE9FF]">{tech}</span>
+              ))}
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a href={selectedProject.github ?? '#'} target="_blank" rel="noreferrer" className="rounded-lg bg-[#4F39F6] px-4 py-2 text-sm font-semibold text-white hover:bg-[#3D2AC4]">GitHub</a>
+              {selectedProject.demo ? (
+                <a href={selectedProject.demo} target="_blank" rel="noreferrer" className="rounded-lg border border-[#4F39F6]/40 px-4 py-2 text-sm font-semibold text-[#EDE9FF] hover:bg-[#4F39F6]/10">Demo</a>
+              ) : null}
+            </div>
+          </motion.div>
+        </div>
+      ) : null}
     </section>
-  );
+  );
 }

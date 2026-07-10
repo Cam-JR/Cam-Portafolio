@@ -10,6 +10,7 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript", "MySQL", "React", "UX/UI"],  
     github: "https://github.com/Cam-JR/DentCare",
     // demo: "",
+    category: "Website",
   },
   {
     id: 10,
@@ -19,6 +20,7 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript"],  
     github: "https://github.com/Cam-JR/MINI-PROJECTS/tree/master?tab=readme-ov-file",
     demo: "https://appresupuestos.netlify.app/",
+    category: "Website",
   },
   {
     id: 9,
@@ -28,6 +30,7 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript", "UX"],
     github: "https://github.com/Cam-JR/MINI-PROJECTS/tree/master?tab=readme-ov-file",
     demo: "https://calculadoradebmi.netlify.app/",
+    category: "Personal",
   },
   {
     id: 8,
@@ -37,6 +40,7 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/Cam-JR/MINI-PROJECTS/tree/master?tab=readme-ov-file",
     demo: "https://css-generador.netlify.app/",
+    category: "Personal",
   },
   {
     id: 7,
@@ -46,6 +50,7 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/Cam-JR/MINI-PROJECTS/tree/master?tab=readme-ov-file",
     demo: "https://todolistcam.netlify.app/",
+    category: "Personal",
   },
   {
     id: 6,
@@ -55,6 +60,7 @@ const projects = [
     tech: ["HTML", "CSS"],
     github: "https://github.com/Cam-JR/MINI-PROJECTS/tree/master?tab=readme-ov-file",
     demo: "https://stoppwatchhh.netlify.app/",
+    category: "Personal",
   },
   {
     id: 5,
@@ -64,6 +70,7 @@ const projects = [
     tech: ["Python", "JavaScript", "CSS", "HTML"],
     github: "https://github.com/Cam-JR/Organizador-de-archivos",
     // demo: "#",
+    category: "Personal",
   },
   {
     id: 4,
@@ -73,6 +80,7 @@ const projects = [
     tech: ["TypeScript", "JavaScript", "CSS", "React"],
     github: "https://github.com/Cam-JR/Cam-Portafolio",
     demo: "https://cam-portafolio.vercel.app/",
+    category: "Website",
   },
   {
     id: 3,
@@ -82,6 +90,7 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript", "TypeScript"], 
     github: "https://github.com/Cam-JR/peluqueria-admin",
     // demo: "#",
+    category: "Website",
   },
   {
     id: 2,
@@ -91,6 +100,7 @@ const projects = [
     tech: ["HTML", "CSS", "PHP", "MySQL"],
     github: "https://github.com/Cam-JR/Medical-Center-Web",
     // demo: "#", 
+    category: "Website",
   },
   {
     id: 1,
@@ -100,6 +110,7 @@ const projects = [
     tech: ["HMLT", "CSS", "JavaScript"],
     github: "https://github.com/Cam-JR/Bar-Cervezas#",
     demo: "https://webarcerveza.netlify.app/#",
+    category: "Website",
   },
   {
     id: 0,
@@ -109,6 +120,7 @@ const projects = [
     tech: ["HTML", "CSS"],
     github: "https://github.com/Cam-JR/BlogCafe",
     demo: "https://webblogcafee.netlify.app/",
+    category: "Blog",
   },
 ];
 

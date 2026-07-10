@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-  FaBuilding, FaCalendarAlt, FaMapMarkerAlt, FaGlobe, FaGraduationCap, FaBriefcase, FaAward
+  FaCalendarAlt, FaMapMarkerAlt, FaBriefcase, FaAward, FaExternalLinkAlt
 } from 'react-icons/fa';
 
 // --- Estructura de Datos ---
@@ -19,31 +19,14 @@ type Experience = {
   techStack: Tech[];
 };
 
-type Education = {
-  title: string;
-  company: string;
-  period: string;
-  location: string;
-};
-
-type Language = {
-  title: string;
-  level: string;
-};
-
 type Achievement = {
   title: string;
   institution: string;
   year: string;
+  certificateUrl?: string;
 };
 
-// Tipo de Unión para los datos de cualquier pestaña (Corrige el error de 'any')
-type TimelineItemData = Experience | Education | Language | Achievement; 
-
-type TabKey = 'Experiencia Profesional' | 'Educación' | 'Idiomas' | 'Cursos';
-
 const EXPERIENCE_DATA: Experience[] = [
-  
   {
     title: 'Desarrolladora Web / Proyectos Personales',
     company: 'Independiente',
@@ -69,7 +52,7 @@ const EXPERIENCE_DATA: Experience[] = [
     company: 'CaféLink Peru E.I.R.L.',
     period: 'Feb 2024 – Jul 2024',
     location: 'Santiago de Surco, Lima',
-    description: [ 
+    description: [
       'Participé en el rediseño del sitio web corporativo, migrándolo de HTML/CSS a WordPress para mejorar la gestión de contenidos.',
       'Migré y optimicé un sitio e-commerce con WordPress y WooCommerce, mejorando el rendimiento y la escalabilidad.',
       'Implementé un chatbot conectado a WhatsApp API (Wasapi) para automatizar consultas.',
@@ -119,206 +102,296 @@ const EXPERIENCE_DATA: Experience[] = [
       { name: 'PHP' },
       { name: 'HTML' },
       { name: 'CSS' },
-      { name: 'JavaScript' }, 
+      { name: 'JavaScript' },
       { name: 'Git' },
       { name: 'GitHub' },
     ],
   },
 ];
 
-const EDUCATION_DATA: Education[] = [
-  {
-    title: 'Ingeniería de Software con Inteligencia Artificial (IA)',
-    company: 'SENATI',
-    period: 'Feb 2021 – Jun 2024',
-    location: 'Villa el Salvador, Lima',
-  }, 
-];
-
-const LANGUAGES_DATA: Language[] = [
-  { title: 'Inglés', level: 'Intermediate (B1-B2)' },
-  { title: 'Español', level: 'Nativo' },
-];
-
 const ACHIEVEMENTS_DATA: Achievement[] = [
-  { title: 'Especialización en Programación Web y Apps', institution: 'Netzun', year: 'En Proceso' },
-  { title: 'Universidad Desarrollo Web - Front-end Web Developer', institution: 'Udemy', year: 'Noviembre 2025' },
-  { title: 'Complete Web & Mobile Designer: UI/UX, Figma, +more', institution: 'Udemy', year: 'Oct 2025' },
-  { title: 'Desarrollo Web Completo con HTML5, CSS3, JS, AJAX, PHP y MySQL', institution: 'Udemy', year: 'Jul 2025' },
-  { title: 'Base de Datos Relacionales - SQL', institution: 'IDAT', year: 'Jun - Aug 2023' },
+  { title: 'Digital safety and security awareness', institution: 'Cisco', year: '2025', certificateUrl: '#' },
+  { title: 'Ia y herramientas digitales', institution: 'DECYGO', year: '2025', certificateUrl: '#' },
+  { title: 'Design Thinking', institution: 'Fundación Telefónica del Perú', year: '2024', certificateUrl: '#' },
+  { title: 'Marketing Digital', institution: 'Fundación Telefónica del Perú', year: '2024', certificateUrl: '#' },
+  { title: 'Java Fundamentals', institution: 'Oracle', year: '2023', certificateUrl: '#' },
+  { title: 'Red Hat System Administration I (RH124)', institution: 'Red Hat', year: '2023', certificateUrl: '#' },
+  { title: 'Especialización en Programación Web y Apps', institution: 'Netzun', year: '2025', certificateUrl: '#' },
+  { title: 'Universidad Desarrollo Web - Front-end Web Developer', institution: 'Udemy', year: '2025', certificateUrl: '#' },
+  { title: 'Complete Web & Mobile Designer: UI/UX, Figma, +more', institution: 'Udemy', year: '2025', certificateUrl: '#' },
 ];
 
-const TAB_DATA: Record<TabKey, { data: TimelineItemData[] }> = {
-  'Experiencia Profesional': { data: EXPERIENCE_DATA },
-  'Educación': { data: EDUCATION_DATA },
-  'Idiomas': { data: LANGUAGES_DATA },
-  'Cursos': { data: ACHIEVEMENTS_DATA },
-};
-
-const TABS: TabKey[] = Object.keys(TAB_DATA) as TabKey[];
-
-// --- Componente Reutilizable para el Item de la Línea de Tiempo ---
-interface TimelineItemProps {
+// Componente de tarjeta de experiencia
+interface ExperienceCardProps {
   title: string;
-  company?: string;
-  period?: string;
-  location?: string;
-  description?: string[];
-  level?: string;
-  institution?: string;
-  year?: string;
-  techStack?: Tech[];
-  activeTab: TabKey;
+  company: string;
+  period: string;
+  location: string;
+  description: string[];
+  techStack: Tech[];
+  index: number;
+  expanded: boolean;
+  onToggle: (index: number) => void;
 }
 
-const TimelineItem: React.FC<TimelineItemProps> = ({
-  title, company, period, location, description, level, institution, year, techStack, activeTab
+const ExperienceCard: React.FC<ExperienceCardProps> = ({
+  title, company, period, location, description, techStack, index, expanded, onToggle
 }) => {
-  const isLanguage = activeTab === 'Idiomas';
-  const isAchievement = activeTab === 'Cursos';
-  const isEducation = activeTab === 'Educación';
-  const isExperience = activeTab === 'Experiencia Profesional';
-
   return (
     <motion.div
-      className="relative bg-white p-5 rounded-2xl shadow-md border hover:shadow-lg transition duration-300 mb-2"
+      className="relative bg-gradient-to-br from-[#03020D] to-[#0A0A1F] p-6 rounded-xl shadow-lg border border-[#4F39F6]/25 hover:border-[#4F39F6] transition-all duration-300 hover:shadow-lg hover:shadow-[#4F39F6]/20"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
     >
       {/* Punto de la línea */}
-      <span className="absolute -left-3 top-6 w-5 h-5 rounded-full bg-white border-2 border-indigo-500 dark:bg-gray-900  "></span>
+      <span className="absolute -left-5 top-8 w-4 h-4 rounded-full bg-gradient-to-br from-[#4F39F6] to-[#03020D] border-4 border-[#02010A]"></span>
 
-      <div className="flex flex-col sm:flex-row justify-between items-start mb-2">
-        <div className="sm:w-3/5 w-full">
-          {/* Título SIN ícono */}
-          <h3 className="font-bold text-gray-800 text-lg">
+      {/* Header con Toggle */}
+      <div
+        className="flex items-start justify-between cursor-pointer"
+        onClick={() => onToggle(index)}
+      >
+        <div className="flex-1">
+          <h3 className="font-bold text-white text-lg hover:text-[#CFC7FF] transition-colors">
             {title}
           </h3>
-
-          {/* Subtítulo */}
-          {(company || level || institution) && (
-            <p className="text-sm text-indigo-600 mt-1 flex items-center">
-              {isEducation && <FaBuilding className="text-base mr-1 text-gray-400" />}
-              {isAchievement && <FaBuilding className="text-base mr-1 text-gray-400" />}
-              {isExperience && <FaBriefcase className="text-base mr-1 text-gray-400" />}
-              {isLanguage ? level : isAchievement ? institution : company}
-            </p>
-          )}
+          <p className="text-sm text-[#CFC7FF] mt-1 flex items-center gap-1">
+            <FaBriefcase className="text-xs" />
+            {company}
+          </p>
         </div>
 
-        {/* Periodo / ubicación / año */}
-        <div className="text-left sm:text-right text-sm text-gray-600 sm:min-w-max sm:ml-4 mt-2 sm:mt-0">
-          {period && (
-            <p className="flex items-center sm:justify-end">
-              <FaCalendarAlt className="h-4 w-4 mr-1 text-gray-400" />
-              {period}
-            </p>
-          )}
-          {location && (
-            <p className="flex items-center sm:justify-end">
-              <FaMapMarkerAlt className="h-4 w-4 mr-1 text-gray-400" />
-              {location}
-            </p>
-          )}
-          {year && (
-            <p className="flex items-center sm:justify-end">
-              <FaCalendarAlt className="h-4 w-4 mr-1 text-gray-400" />
-              {year}
-            </p>
-          )}
-        </div>
+        {/* Flechita Toggle */}
+        <motion.div
+          animate={{ rotate: expanded ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="ml-4 text-[#4F39F6] text-xl flex-shrink-0"
+        >
+          ▼
+        </motion.div>
       </div>
 
-      {description && (
-        <ul className="mt-3 text-gray-700 text-sm list-disc pl-5 space-y-1">
-          {description.map((item, i) => <li key={i}>{item}</li>)}
-        </ul>
-      )}
+      {/* Fecha y ubicación */}
+      <div className="text-xs text-gray-400 mt-3 flex flex-wrap gap-3">
+        <p className="flex items-center gap-1">
+          <FaCalendarAlt className="w-3 h-3 text-[#4F39F6]" />
+          {period}
+        </p>
+        <p className="flex items-center gap-1">
+          <FaMapMarkerAlt className="w-3 h-3 text-[#4F39F6]" />
+          {location}
+        </p>
+      </div>
 
-      {isExperience && techStack && (
-        <div className="mt-4 flex flex-wrap gap-2">
-          {techStack.map((tech, i) => (
-            <span key={i} className="inline-flex items-center px-3 py-1 bg-gray-800 text-white dark:bg-gray-700 dark:text-gray-100 text-xs font-medium rounded-full shadow-sm">
-              {tech.name}
-            </span>
-          ))}
+      {/* Contenido expandible */}
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden mt-4"
+          >
+            {/* Descripción */}
+            <ul className="text-gray-300 text-sm list-disc pl-5 space-y-2 mb-4">
+              {description.map((item, i) => (
+                <li key={i} className="leading-relaxed">{item}</li>
+              ))}
+            </ul>
+
+            {/* Tech Stack */}
+            {techStack && (
+              <div className="flex flex-wrap gap-2">
+                {techStack.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-[#4F39F6] to-[#03020D] text-white text-xs font-semibold rounded-full shadow-md hover:shadow-lg transition-all hover:scale-105"
+                  >
+                    {tech.name}
+                  </span>
+                ))}
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
+
+// Componente de tarjeta de certificado
+interface CertificateCardProps {
+  title: string;
+  institution: string;
+  year: string;
+  certificateUrl?: string;
+  index: number;
+}
+
+const CertificateCard: React.FC<CertificateCardProps> = ({
+  title, institution, year, certificateUrl, index
+}) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+      viewport={{ once: true }}
+      className="group relative bg-gradient-to-br from-[#03020D] to-[#0A0A1F] p-6 rounded-xl border border-[#4F39F6]/25 hover:border-[#4F39F6] hover:shadow-lg hover:shadow-[#4F39F6]/20 transition-all duration-300 h-full flex flex-col"
+    >
+      {/* Header con icono y año */}
+      <div className="flex items-start justify-between mb-4 pb-4 border-b border-[#29286E]">
+        <div className="p-2.5 bg-[#4F39F6] rounded-lg flex items-center justify-center">
+          <FaAward className="text-white text-lg" />
         </div>
-      )}
+        <span className="text-xs font-bold text-[#F4F0FF] bg-[#4F39F6]/20 px-3 py-1 rounded-full">
+          {year}
+        </span>
+      </div>
+
+      {/* Título */}
+      <h3 className="text-white font-bold text-sm mb-3 line-clamp-3 group-hover:text-[#CFC7FF] transition-colors flex-grow">
+        {title}
+      </h3>
+
+      {/* Institución */}
+      <p className="text-[#CFC7FF] text-xs font-semibold mb-4">
+        {institution}
+      </p>
+
+      {/* Botón Ver Certificado */}
+      <a
+        href={certificateUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center justify-center gap-2 bg-[#4F39F6] hover:bg-[#3D2AC4] text-white text-xs font-semibold px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 w-full"
+      >
+        <FaExternalLinkAlt className="w-3.5 h-3.5" />
+        Ver Certificado
+      </a>
     </motion.div>
   );
 };
 
 // --- Componente Principal ---
-export default function About() {
-  const [activeTab, setActiveTab] = useState<TabKey>('Experiencia Profesional');
-  const currentTabContent = TAB_DATA[activeTab];
+type TabKey = 'experience' | 'certificates';
+
+export default function Experience() {
+  const [expandedIndexes, setExpandedIndexes] = useState<Set<number>>(new Set());
+  const [activeTab, setActiveTab] = useState<TabKey>('experience');
+
+  const toggleExpand = (index: number) => {
+    const newSet = new Set(expandedIndexes);
+    if (newSet.has(index)) {
+      newSet.delete(index);
+    } else {
+      newSet.add(index);
+    }
+    setExpandedIndexes(newSet);
+  };
+
+  const tabs: { key: TabKey; label: string }[] = [
+    { key: 'experience', label: 'Experiencia Profesional' },
+    { key: 'certificates', label: 'Certificados' },
+  ];
 
   return (
-    <section id="experience" className="py-16 bg-gray-50  transition-colors duration-500">
-      <h2 className="text-4xl font-extrabold mb-7 text-center text-gray-900   transition-colors duration-500">
-        Mi experiencia
-      </h2>
-      <p className="text-base text-gray-600   text-center mb-7 transition-colors duration-500">
-        Un viaje a través de mi crecimiento profesional, formación, idiomas y cursos.
-      </p>
+    <section id="experience" className="relative overflow-hidden py-20 bg-gradient-to-b from-[#02010A] via-[#0A0A1F] to-[#1a1a3f] transition-colors duration-500">
+      {/* Título */}
+      <div className="text-center mb-10 px-4">
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-5xl font-extrabold mb-4 bg-gradient-to-r from-[#4F39F6] via-[#6C5CE7] to-[#03020D] bg-clip-text text-transparent"
+        >
+          Mi experiencia
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="text-gray-300 text-lg max-w-2xl mx-auto"
+        >
+          Un viaje a través de mi crecimiento profesional y certificaciones
+        </motion.p>
+      </div>
 
-      {/* Tabs */}
-      <div className="flex justify-center mb-10 px-4">
-        <div className="flex p-1 bg-white  rounded-xl shadow-md border border-gray-100   overflow-x-auto whitespace-nowrap max-w-full transition-colors duration-500">
-          {TABS.map((tab) => (
+      <div className="flex flex-wrap justify-center gap-3 px-4 mb-12">
+        {tabs.map((tab) => {
+          const isActive = activeTab === tab.key;
+
+          return (
             <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`flex items-center px-3 py-2 sm:px-4 rounded-lg text-sm font-medium transition duration-300 ${
-                activeTab === tab
-                  ? 'bg-indigo-700 text-white shadow-lg'
-                  : 'text-gray-600   hover:bg-gray-100   hover:text-gray-800 dark:hover:text-white'
+              key={tab.key}
+              type="button"
+              onClick={() => setActiveTab(tab.key)}
+              className={`rounded-full border px-5 py-2.5 text-sm font-semibold transition-all duration-300 ${
+                isActive
+              ? 'border-[#4F39F6] bg-[#4F39F6]/20 text-[#F4F0FF] shadow-lg shadow-[#4F39F6]/20'
+              : 'border-[#4F39F6]/30 bg-[#03020D] text-gray-300 hover:border-[#4F39F6] hover:text-white'
               }`}
             >
-              {tab === 'Experiencia Profesional' && <FaBriefcase className="h-5 w-5 mr-1 sm:mr-2" />}
-              {tab === 'Educación' && <FaGraduationCap className="h-5 w-5 mr-1 sm:mr-2" />}
-              {tab === 'Idiomas' && <FaGlobe className="h-5 w-5 mr-1 sm:mr-2" />}
-              {tab === 'Cursos' && <FaAward className="h-5 w-5 mr-1 sm:mr-2" />}
-              {tab}
+              {tab.label}
             </button>
-          ))}
-        </div>
+          );
+        })}
       </div>
 
-      {/* Contenido con Framer Motion */}
-      <div className="container max-w-3xl mx-auto px-6">
-        <div className="relative border-l-2 border-gray-300 dark:border-gray-600 pl-6 space-y-8 transition-colors duration-500">
-          <AnimatePresence mode="wait">
+      <div className="max-w-7xl mx-auto px-4">
+        <AnimatePresence mode="wait">
+          {activeTab === 'experience' ? (
             <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 10 }}
+              key="experience"
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.25 }}
+              className="max-w-5xl mx-auto"
             >
-              {currentTabContent.data.map((item: TimelineItemData, index: number) => (
-                <TimelineItem
-                  key={index}
-                  title={item.title}
-                  // Se usan Type Guards ('propiedad' in item) para verificar si la propiedad existe
-                  // en el objeto antes de acceder a ella, evitando el error de TypeScript.
-                  company={('company' in item) ? item.company : undefined}
-                  period={('period' in item) ? item.period : undefined} // ESTA FUE LA CORRECCIÓN CLAVE
-                  location={('location' in item) ? item.location : undefined}
-                  description={('description' in item) ? item.description : undefined}
-                  level={('level' in item) ? item.level : undefined}
-                  institution={('institution' in item) ? item.institution : undefined}
-                  year={('year' in item) ? item.year : undefined}
-                  techStack={('techStack' in item) ? item.techStack : undefined}
-                  activeTab={activeTab}
-                />
-              ))}
+              <div className="relative border-l-4 border-[#4F39F6]/60 pl-8 space-y-4 transition-colors duration-500">
+                {EXPERIENCE_DATA.map((experience, index) => (
+                  <ExperienceCard
+                    key={index}
+                    {...experience}
+                    index={index}
+                    expanded={expandedIndexes.has(index)}
+                    onToggle={toggleExpand}
+                  />
+                ))}
+              </div>
             </motion.div>
-          </AnimatePresence>
-        </div>
+          ) : (
+            <motion.div
+              key="certificates"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.25 }}
+              className="max-w-6xl mx-auto"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 auto-rows-fr">
+                {ACHIEVEMENTS_DATA.map((cert, index) => (
+                  <CertificateCard
+                    key={index}
+                    {...cert}
+                    index={index}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
+
+      {/* Decoración de fondo */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-[#4F39F6]/10 rounded-full blur-3xl pointer-events-none opacity-20"></div>
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#03020D]/50 rounded-full blur-3xl pointer-events-none opacity-20"></div>
     </section>
   );
 }

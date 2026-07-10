@@ -2,17 +2,15 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  FaUser, 
-  FaEnvelope, 
-  FaBriefcase, 
-  FaDownload 
+import {
+  FaUser,
+  FaBriefcase,
+  FaDownload,
 } from "react-icons/fa";
 
 // --- Estructura de Datos ---
 const personalData = [
   { icon: <FaUser />, label: "Nombre", value: "Camila Jimenez Riveros" },
-  { icon: <FaEnvelope />, label: "Email", value: "camilajimenezr21@gmail.com" },
   { icon: <FaBriefcase />, label: "Estado", value: "Disponible para trabajar" },
 ];
 
@@ -26,7 +24,10 @@ const interests = [
 
 export default function About() {
   return (
-    <section id="about" className="py-16 bg-white dark:bg-[#0a0a1f] transition-colors duration-500">
+    <section
+      id="about"
+      className="py-16 bg-white dark:bg-[#0a0a1f] transition-colors duration-500"
+    >
       <div className="container mx-auto px-6">
         {/* --- Título y subtítulo --- */}
         <motion.h2
@@ -36,7 +37,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
           viewport={{ once: false }}
         >
-          About me
+          Sobre Mí
         </motion.h2>
 
         <motion.p
@@ -54,7 +55,7 @@ export default function About() {
         </motion.p>
 
         {/* --- Grid de Información Personal --- */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto mb-10">
           {personalData.map((item, index) => (
             <motion.div
               key={index}
@@ -93,7 +94,7 @@ export default function About() {
 
           {/* Tags de intereses */}
           <motion.div
-            className="flex flex-wrap justify-center gap-3 mb-6"
+            className="flex flex-wrap justify-center gap-3 mb-8"
             initial="hidden"
             whileInView="show"
             viewport={{ once: false }}
@@ -119,22 +120,15 @@ export default function About() {
             ))}
           </motion.div>
 
-          {/* Botones */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          {/* Botón Descargar CV */}
+          <div className="flex justify-center">
             <a
-              href="/CV-Camila Jimenez Riveros.pdf"
+              href="/CV-JIMENEZ-RIVEROS-CAMILA.pdf"
               download
               className="flex items-center justify-center px-6 py-3 bg-indigo-500 text-white rounded-lg shadow-lg hover:bg-indigo-600 transition duration-300"
             >
               <FaDownload className="mr-2" />
               Descargar mi CV
-            </a>
-            <a
-              href="#contact"
-              className="flex items-center justify-center px-6 py-3 bg-white border border-gray-300 text-gray-800 rounded-lg shadow-md hover:bg-gray-100 transition duration-300"
-            >
-              <FaBriefcase className="mr-2" />
-              Contactarme ahora
             </a>
           </div>
         </motion.div>

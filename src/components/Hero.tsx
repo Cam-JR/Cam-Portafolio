@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaRegStar, FaArrowRight, FaDownload, FaEnvelope } from "react-icons/fa";
+import { FaRegStar, FaArrowRight, FaDownload } from "react-icons/fa";
 
 export default function Hero() {
   return (
@@ -52,29 +52,16 @@ export default function Hero() {
 
           {/* Descargar CV */}
           <motion.a
-            href="/CV-Camila Jimenez Riveros.pdf"
+            href="/CV-JIMENEZ-RIVEROS-CAMILA.pdf"
             download
             className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl shadow-lg hover:bg-indigo-600 transition duration-300 transform hover:-translate-y-1"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: false, amount: 0.3 }}
           >
             <FaDownload className="text-base" />
             <span className="font-medium">Descargar CV</span>
-          </motion.a>
-
-          {/* Contacto */}
-          <motion.a
-            href="#contact"
-            className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl shadow-lg hover:bg-indigo-600 transition duration-300 transform hover:-translate-y-1"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            viewport={{ once: false, amount: 0.3 }}
-          >
-            <FaEnvelope className="text-base" />
-            <span className="font-medium">Trabajemos juntos</span>
           </motion.a>
         </div>
       </motion.div>
