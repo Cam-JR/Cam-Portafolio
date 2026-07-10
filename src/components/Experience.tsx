@@ -110,12 +110,12 @@ const EXPERIENCE_DATA: Experience[] = [
 ];
 
 const ACHIEVEMENTS_DATA: Achievement[] = [
-  { title: 'Intermediate Program Of English', institution: 'Britanico', year: '2025', certificateUrl: '#' },
-  { title: 'Desarrollo Web Completo con HTML5, CSS3, JS, AJAX, PHP y MySQL', institution: 'Fundación Telefónica del Perú', year: '2025', certificateUrl: '#' },
-  { title: 'WordPress', institution: 'Udemy', year: '2025', certificateUrl: '#' },
-  { title: 'Universidad Desarrollo Web - Front-end Web Developer', institution: 'Udemy', year: '2025', certificateUrl: '#' },
-  { title: 'Complete Web & Mobile Designer: UI/UX, Figma, +more', institution: 'Udemy', year: '2025', certificateUrl: '#' },
-  { title: 'SQL BASE DE DATOS RELACIONALES', institution: 'IDAT', year: '2023', certificateUrl: '#' },
+  { title: 'Intermediate Program Of English', institution: 'Britanico', year: '2025', certificateUrl: 'https://drive.google.com/file/d/1TFRx1KheYSIK6f0Qyle9ff6-U1Kmzhdf/view?usp=sharing' },
+  { title: 'Desarrollo Web Completo con HTML5, CSS3, JS, AJAX, PHP y MySQL', institution: 'Fundación Telefónica del Perú', year: '2025', certificateUrl: 'https://drive.google.com/file/d/10fqTtbzOZhS2wzbafRhPz6yFUk8Yy1aO/view?usp=sharing' },
+  { title: 'WordPress', institution: 'Udemy', year: '2025', certificateUrl: 'https://drive.google.com/file/d/1_p0f6VxUnOqybvJoYW-rx0j6lAahWaED/view?usp=sharing' },
+  { title: 'Universidad Desarrollo Web - Front-end Web Developer', institution: 'Udemy', year: '2025', certificateUrl: 'https://drive.google.com/file/d/19DXHlBPByTLVqDTAZLvzVWlGFKXeZtbl/view?usp=sharing' },
+  { title: 'Complete Web & Mobile Designer: UI/UX, Figma, +more', institution: 'Udemy', year: '2025', certificateUrl: 'https://drive.google.com/file/d/1rJUyFU9g-R51LkCUB_Pfct0MtKBBTQnX/view?usp=sharing' },
+  { title: 'SQL BASE DE DATOS RELACIONALES', institution: 'IDAT', year: '2023', certificateUrl: 'https://drive.google.com/file/d/1l3v5brKFHdIhpTHh7tDMO5P-nr7qS-fj/view?usp=sharing' },
   { title: 'Database Design', institution: 'Oracle Academy', year: '2022', certificateUrl: '#' },
 ];
 
