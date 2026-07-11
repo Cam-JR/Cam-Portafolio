@@ -7,7 +7,7 @@ import { Sun, Moon } from 'lucide-react';
 
 export default function Projects() {
   const [darkMode, setDarkMode] = useState(true);
-  const categories = ['Todos', 'Website', 'Blog', 'Personal'] as const;
+  const categories = ['Todos', 'Website', 'Blog', 'Personal', 'Gestión'] as const;
   type Category = typeof categories[number];
   const [activeCategory, setActiveCategory] = useState<Category>('Todos');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
