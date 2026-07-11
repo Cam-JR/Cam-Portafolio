@@ -31,7 +31,7 @@ const EXPERIENCE_DATA: Experience[] = [
     title: 'Desarrolladora Informática',
     company: 'TECSIS INGENIERIA S.A.C.',
     period: 'Ene 2025 – Abr 2025',
-    location: 'Lima, Perú',
+    location: 'San Isidro, Lima',
     description: [
     'Desarrollé e implementé soluciones de automatización de procesos administrativos utilizando Python y CustomTkinter, optimizando los tiempos operativos del equipo de Expediting.',
     'Automaticé el envío masivo de correos personalizados mediante la integración con Microsoft Graph API y autenticación OAuth 2.0, eliminando procesos manuales de comunicación con proveedores.',
@@ -307,27 +307,30 @@ export default function Experience() {
 
   return (
     <section id="experience" className="relative overflow-hidden py-20 bg-gradient-to-b from-[#02010A] via-[#0A0A1F] to-[#1a1a3f] transition-colors duration-500">
-      {/* Título */}
-      <div className="text-center mb-10 px-4">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-5xl font-extrabold mb-4 bg-gradient-to-r from-[#4F39F6] via-[#6C5CE7] to-[#03020D] bg-clip-text text-transparent"
-        >
-          Mi experiencia
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="text-gray-300 text-lg max-w-2xl mx-auto"
-        >
-          Un viaje a través de mi crecimiento profesional y certificaciones
-        </motion.p>
-      </div>
+      {/* Título */} 
+        <div className="text-center mb-10 px-4">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 15 }}
+              transition={{ duration: 0.3 }}
+            >
+              <h2 className="text-5xl font-extrabold mb-4 bg-gradient-to-r from-[#4F39F6] via-[#6C5CE7] to-[#03020D] bg-clip-text text-transparent">
+                {activeTab === 'experience'
+                  ? 'Mi Experiencia'
+                  : 'Mis Certificados'}
+              </h2>
+
+              <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+                {activeTab === 'experience'
+                  ? 'Un viaje a través de mi crecimiento profesional.'
+                  : 'Certificaciones y cursos que respaldan mis conocimientos y habilidades.'}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
       <div className="flex flex-wrap justify-center gap-3 px-4 mb-12">
         {tabs.map((tab) => {
