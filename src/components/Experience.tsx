@@ -26,6 +26,8 @@ type Achievement = {
   certificateUrl?: string;
 };
 
+//EXPERIENCIA PROFESIONAL
+
 const EXPERIENCE_DATA: Experience[] = [
   {
     title: 'Desarrolladora Informática',
@@ -118,8 +120,10 @@ const EXPERIENCE_DATA: Experience[] = [
   },
 ];
 
+//CERTIFICACIONES
+
 const ACHIEVEMENTS_DATA: Achievement[] = [
-  { title: 'Intermediate Program Of English', institution: 'Britanico', year: '2025', certificateUrl: 'https://drive.google.com/file/d/1TFRx1KheYSIK6f0Qyle9ff6-U1Kmzhdf/view?usp=sharing' },
+  { title: 'Intermediate Program Of English', institution: 'Britanico', year: '2026', certificateUrl: 'https://drive.google.com/file/d/1TFRx1KheYSIK6f0Qyle9ff6-U1Kmzhdf/view?usp=sharing' },
   { title: 'Desarrollo Web Completo con HTML5, CSS3, JS, AJAX, PHP y MySQL', institution: 'Udemy', year: '2025', certificateUrl: 'https://drive.google.com/file/d/10fqTtbzOZhS2wzbafRhPz6yFUk8Yy1aO/view?usp=sharing' },
   { title: 'WordPress', institution: 'Udemy', year: '2025', certificateUrl: 'https://drive.google.com/file/d/1_p0f6VxUnOqybvJoYW-rx0j6lAahWaED/view?usp=sharing' },
   { title: 'Universidad Desarrollo Web - Front-end Web Developer', institution: 'Udemy', year: '2025', certificateUrl: 'https://drive.google.com/file/d/19DXHlBPByTLVqDTAZLvzVWlGFKXeZtbl/view?usp=sharing' },

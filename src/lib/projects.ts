@@ -2,6 +2,27 @@ import { Type } from "lucide-react";
 
 //projects.ts
 const projects = [ 
+   
+  {
+    id: 13,
+    title: "Aplicación Gestión de Expediting y Correos",
+    description:"Aplicación web que permite gestionar expedientes y correos electrónicos de manera eficiente, optimizando la comunicación y el seguimiento de tareas.",
+    image: "#",
+    tech: ["HTML", "CSS", "JavaScript", "MySQL", "React", "UX/UI"],  
+    github: "#",
+    // demo: "",
+    category: "Gestión",
+  },
+  {
+    id: 12,
+    title: "ERP",
+    description:"Sistema de planificación de recursos empresariales que integra y gestiona las principales funciones de una empresa, optimizando procesos y mejorando la eficiencia operativa.",
+    image: "#",
+    tech: ["HTML", "CSS", "JavaScript", "MySQL", "React", "UX/UI"],  
+    github: "#",
+    // demo: "",
+    category: "Gestión",
+  },
   {
     id: 11,
     title: "DentCare",
@@ -20,7 +41,7 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript"],  
     github: "https://github.com/Cam-JR/MINI-PROJECTS/tree/master?tab=readme-ov-file",
     demo: "https://appresupuestos.netlify.app/",
-    category: "Website",
+    category: "Personal",
   },
   {
     id: 9,
@@ -44,7 +65,7 @@ const projects = [
   },
   {
     id: 7,
-    title: "ToDo List App",
+    title: "ToDo List",
     description: "Aplicación para gestionar tareas: add, edit, delete mediante drag & drop. Incluye filtros, búsqueda, notificaciones.",
     image: "/images/proyectos/todolist.png ",
     tech: ["HTML", "CSS", "JavaScript"],

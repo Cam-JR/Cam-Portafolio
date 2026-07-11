@@ -14,12 +14,12 @@ const ALL_SKILLS: Skill[] = [
   { name: 'JavaScript', icon: '/icons/javascript.svg' },
   { name: 'TypeScript', icon: '/icons/typescript-icon.svg' },
   { name: 'React', icon: '/icons/react.svg' },
-  { name: 'Next.js', icon: '/icons/nextjs-icon.svg' },
+  // { name: 'Next.js', icon: '/icons/nextjs-icon.svg' },
   { name: 'Tailwind CSS', icon: '/icons/tailwind.svg' },
   { name: 'Bootstrap', icon: '/icons/bootstrap.svg' },
 
   // Backend
-  { name: 'Node.js', icon: '/icons/nodejs-icon.svg' },
+  // { name: 'Node.js', icon: '/icons/nodejs-icon.svg' },
   { name: 'PHP', icon: '/icons/php.svg' },
   { name: 'Laravel', icon: '/icons/laravel.svg' },
   { name: 'Python', icon: '/icons/python.svg' },
