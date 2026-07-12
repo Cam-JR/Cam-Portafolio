@@ -76,7 +76,7 @@ export default function Footer() {
 
             <ul className="space-y-2 text-sm">
               {[
-                ["Inicio", "#hero"],
+                ["Inicio", "#"],
                 ["Sobre Mí", "#about"],
                 ["Skills", "#skills"],
                 ["Experiencia", "#experience"],

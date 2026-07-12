@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -8,7 +9,7 @@ type Props = {
   description: string;
   image: string;
   tech: string[];
-  github: string;
+  github?: string;
   demo?: string;
   isActive?: boolean;
   darkMode?: boolean;
@@ -27,6 +28,7 @@ export default function ProjectCard({
   onClick,
 }: Props) {
   const ref = useRef<HTMLDivElement | null>(null);
+
   const [style, setStyle] = useState({
     transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)',
   });
@@ -34,17 +36,21 @@ export default function ProjectCard({
   const handleMove = (e: React.MouseEvent) => {
     const el = ref.current;
     if (!el) return;
+
     const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+
     const cx = rect.width / 2;
     const cy = rect.height / 2;
 
     const maxRotate = 8;
+
     const rotateY = ((x - cx) / cx) * maxRotate * -1;
     const rotateX = ((y - cy) / cy) * maxRotate;
 
     const scale = isActive ? 1.04 : 1.02;
+
     setStyle({
       transform: `perspective(1000px) rotateX(${rotateX.toFixed(
         2
@@ -80,12 +86,15 @@ export default function ProjectCard({
           alt={`${title} blurred`}
           className="absolute inset-0 w-full h-full object-cover blur-xl scale-110"
         />
+
         <img
           src={image}
           alt={title}
           className="relative w-full h-full object-contain transition-all duration-200"
           style={{
-            transform: isActive ? 'scale(1.06) translateZ(20px)' : 'scale(1.02)',
+            transform: isActive
+              ? 'scale(1.06) translateZ(20px)'
+              : 'scale(1.02)',
           }}
         />
       </div>
@@ -98,6 +107,7 @@ export default function ProjectCard({
         >
           {title}
         </h3>
+
         <p
           className={`text-sm mb-3 line-clamp-3 ${
             darkMode ? 'text-gray-300' : 'text-gray-600'
@@ -110,12 +120,11 @@ export default function ProjectCard({
           {tech.map((t) => (
             <span
               key={t}
-              className={`px-3 py-1 rounded-full text-xs font-medium transition 
-                ${
-                  darkMode
-                    ? 'bg-[#4F39F6]/15 text-[#EDE9FF] border border-[#4F39F6]/30'
-                    : 'bg-[#F2EBFF] text-[#4F39F6]'
-                }`}
+              className={`px-3 py-1 rounded-full text-xs font-medium transition ${
+                darkMode
+                  ? 'bg-[#4F39F6]/15 text-[#EDE9FF] border border-[#4F39F6]/30'
+                  : 'bg-[#F2EBFF] text-[#4F39F6]'
+              }`}
             >
               {t}
             </span>
@@ -127,16 +136,31 @@ export default function ProjectCard({
             darkMode ? 'text-[#CFC7FF]' : 'text-[#4F39F6]'
           }`}
         >
-          <a href={github} target="_blank" rel="noreferrer" className="hover:underline">
-            GitHub
-          </a>
-          {demo ? (
-            <a href={demo} target="_blank" rel="noreferrer" className="hover:underline">
+          {github && github !== '#' && (
+            <a
+              href={github}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:underline"
+              onClick={(e) => e.stopPropagation()}
+            >
+              GitHub
+            </a>
+          )}
+
+          {demo && demo !== '#' && (
+            <a
+              href={demo}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:underline"
+              onClick={(e) => e.stopPropagation()}
+            >
               Demo
             </a>
-          ) : null}
+          )}
         </div>
       </div>
     </motion.div>
-  );
+  );
 }

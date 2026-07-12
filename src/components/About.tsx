@@ -123,7 +123,7 @@ export default function About() {
           {/* Botón Descargar CV */}
           <div className="flex justify-center">
             <a
-              href="/CV-JIMENEZ-RIVEROS-CAMILA.pdf"
+              href="/cv/CV-JIMENEZ-RIVEROS-CAMILA.pdf"
               download
               className="flex items-center justify-center px-6 py-3 bg-indigo-500 text-white rounded-lg shadow-lg hover:bg-indigo-600 transition duration-300"
             >

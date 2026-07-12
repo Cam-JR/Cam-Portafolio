@@ -7,7 +7,7 @@ export default function Hero() {
     <section
       className="relative min-h-screen w-full overflow-hidden bg-cover bg-center bg-no-repeat pt-[72px]"
       style={{
-        backgroundImage: "url('/images/fondo.jpg')",
+        backgroundImage: "url('/images/backgrounds/fondo.jpg')",
       }}
     >
       {/* Overlay oscuro */}
@@ -52,7 +52,7 @@ export default function Hero() {
 
           {/* Descargar CV */}
           <motion.a
-            href="/CV-JIMENEZ-RIVEROS-CAMILA.pdf"
+            href="/cv/CV-JIMENEZ-RIVEROS-CAMILA.pdf"
             download
             className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl shadow-lg hover:bg-indigo-600 transition duration-300 transform hover:-translate-y-1"
             initial={{ opacity: 0, y: 20 }}
